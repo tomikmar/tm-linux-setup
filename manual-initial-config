@@ -1,0 +1,20 @@
+### Select vim as default editor
+sudo update-alternatives --config editor
+
+
+### Install soft by apt
+# Tools
+apt install colordiff mc pv jq httpie whois hexdiff xclip
+# Hex editor
+apt install wxhexeditor
+# Amator radio soft
+apt install viking gpxviewer gpredict gqrx-sdr
+# File explorer
+apt install xfe
+
+
+### Install additional soft
+* IntelliJ
+* Beyond Compare
+* Visual Studio Code
+
