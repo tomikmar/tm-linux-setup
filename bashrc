@@ -24,3 +24,5 @@ stty intr ^J
 # Aliases for tools
 alias maven-on='export PATH=~/java/maven/apache-maven-3.6.0/bin:$PATH'
 
+# Set default rights
+umask 0077
