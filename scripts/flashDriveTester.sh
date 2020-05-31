@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Version: 1.0 (2019.02.11)
+# Version: 1.0.1 (2020.05.31)
 #
 
 USB_DEVICE=/media/path/to-usb
@@ -8,7 +8,7 @@ NUMBER_OF_FILES_TO_COPY=64
 
 
 RANDOM_FILE=./tmp.remove.me
-TEST_DIRECTORY=use-test
+TEST_DIRECTORY=usb-test
 mkdir "$USB_DEVICE/$TEST_DIRECTORY"
 
 echo -e "Start time:" `date +"%Y-%m-%d %T %Z"` "\n"
