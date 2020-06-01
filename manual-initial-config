@@ -14,7 +14,7 @@ apt install xfe
 # Converters
 apt install dos2unix
 # Network tests
-apt install hping3
+apt install hping3 nmap
 # Password manager
 apt install keepassxc
 

@@ -19,6 +19,7 @@ alias gcd='git checkout develop'
 alias gl='git log -1 | grep "    B" | awk '"'"'{$1=$1};1'"'"' | xclip '
 
 # Replace Ctrl-C with Ctrl-J, so I could use copy/paste normally on Linux
+# (configure terminal shortcuts manually)
 stty intr ^J
 
 # Aliases for tools
@@ -26,3 +27,4 @@ alias maven-on='export PATH=~/java/maven/apache-maven-3.6.0/bin:$PATH'
 
 # Set default rights
 umask 0077
+
