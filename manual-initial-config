@@ -13,8 +13,8 @@ apt install viking gpxviewer gpredict gqrx-sdr
 apt install xfe
 # Converters
 apt install dos2unix
-# Network tests
-apt install hping3 nmap
+# Network tools
+apt install net-tools hping3 nmap
 # Password manager
 apt install keepassxc
 
