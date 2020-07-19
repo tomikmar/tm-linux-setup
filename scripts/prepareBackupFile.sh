@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Script version
+VERSION="1.0.0 (2020.07.19)"
+
 
 # Key generation
 #   gpg [--expert] --full-generate-key
@@ -11,10 +14,15 @@
 # Key import
 #   gpg --allow-secret-key-import --import backup-test-private.key
 #   gpg --import backup-test-public.key
+# Decryption examples
+#   gpg --decrypt file.txt.gpg > file.txt
+#   gpg --decrypt my-dir.tar.gz.gpg | tar xvz
 
 
-[ $# -eq 0 ] && { echo "Please provide directory to backup as a first argument."; exit 1; }
+[ $# -eq 0 ] && { echo "Please provide directory to backup as the first argument."; exit 1; }
 DIR_TO_BACKUP=$1
+[ $# -eq 1 ] && { echo "Please provide gpg recipent as the second argument."; exit 1; }
+RECIPIENT=$2
 [ ! -e $DIR_TO_BACKUP ] && { echo "Directory \"$DIR_TO_BACKUP\" does not exist."; exit 1; }
 [ ! -d $DIR_TO_BACKUP ] && { echo "\"$DIR_TO_BACKUP\" is NOT a directory."; exit 1; }
 
@@ -22,17 +30,26 @@ echo "Checking is required tools are installed ..."
 command -v createContentInfo.sh  || { echo "Please add \"createContentInfo.sh\" script to path first."; exit 2; }
 command -v gpg || { echo "Please install \"gpg\" first."; exit 2; }
 
-echo "Generating content summary ..."
+echo "Checking if public key is available for recipient \"$RECIPIENT\" ..."
+gpg --list-key $RECIPIENT || exit 3
+
+
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Preparing backup file (script version: $VERSION) ..."
+
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Generating content summary ..."
 cd $DIR_TO_BACKUP
 bash createContentInfo.sh
 cd ..
 
-echo "Generating archive ..."
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Generating archive ..."
 CREATION_TIME=`date +"%Y-%m-%d-%H%M%S"`
-tar cvzf $DIR_TO_BACKUP-$CREATION_TIME.tar.gz $DIR_TO_BACKUP
-ls -l $DIR_TO_BACKUP-$CREATION_TIME.tar.gz
+ARCHIVE_FILE=$DIR_TO_BACKUP-$CREATION_TIME.tar.gz
+tar cvzf $ARCHIVE_FILE $DIR_TO_BACKUP
+ls -l $ARCHIVE_FILE
 
-#gpg --encrypt --recipient "backup-test" myfile.txt
-#gpg --decrypt file.txt.gpg > file.txt
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive ..."
+gpg --encrypt --recipient "$RECIPIENT" $ARCHIVE_FILE
+rm $ARCHIVE_FILE
 
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] All done."
 
