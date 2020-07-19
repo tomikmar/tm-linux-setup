@@ -27,7 +27,12 @@ cd $DIR_TO_BACKUP
 bash createContentInfo.sh
 cd ..
 
+echo "Generating archive ..."
+CREATION_TIME=`date +"%Y-%m-%d-%H%M%S"`
+tar cvzf $DIR_TO_BACKUP-$CREATION_TIME.tar.gz $DIR_TO_BACKUP
+ls -l $DIR_TO_BACKUP-$CREATION_TIME.tar.gz
 
-#gpg -e -r "backup-test" myfile.txt
-#gpg -d file.txt.gpg > file.txt
+#gpg --encrypt --recipient "backup-test" myfile.txt
+#gpg --decrypt file.txt.gpg > file.txt
+
 
