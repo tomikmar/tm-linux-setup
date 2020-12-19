@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script version
-VERSION="1.0.0 (2020.07.19)"
+VERSION="1.0.1 (2020.11.30)"
 
 
 # Key generation
@@ -17,7 +17,9 @@ VERSION="1.0.0 (2020.07.19)"
 # Decryption examples
 #   gpg --decrypt file.txt.gpg > file.txt
 #   gpg --decrypt my-dir.tar.gz.gpg | tar xvz
-
+# Show algorithms
+#   gpg --version
+#
 
 [ $# -eq 0 ] && { echo "Please provide directory to backup as the first argument."; exit 1; }
 DIR_TO_BACKUP=$1
@@ -47,9 +49,12 @@ ARCHIVE_FILE=$DIR_TO_BACKUP-$CREATION_TIME.tar.gz
 tar cvzf $ARCHIVE_FILE $DIR_TO_BACKUP
 ls -l $ARCHIVE_FILE
 
-echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive ..."
-gpg --encrypt --recipient "$RECIPIENT" $ARCHIVE_FILE
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive (first pass) ..."
+gpg --encrypt --cipher-algo AES256 --recipient "$RECIPIENT" $ARCHIVE_FILE
 rm $ARCHIVE_FILE
+echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive (second pass) ..."
+gpg --encrypt --cipher-algo CAST5 --recipient "$RECIPIENT" $ARCHIVE_FILE.gpg
+rm $ARCHIVE_FILE.gpg
 
 echo "[`date +"%Y-%m-%d-%H:%M:%S"`] All done."
 
