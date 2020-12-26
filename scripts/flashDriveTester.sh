@@ -26,6 +26,7 @@ n=1
 while [ $n -le $NUMBER_OF_FILES_TO_COPY ]; do
     echo -e "\nStarting round $n (" `date +"%Y-%m-%d %T %Z"` ") *****************" 
     time cp -v $RANDOM_FILE $USB_DEVICE/$TEST_DIRECTORY/tmp_$n.remove.me
+    #sync
     (( n++ ))
 done
 
