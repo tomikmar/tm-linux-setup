@@ -42,3 +42,15 @@
   * net users
 
 
+# Uninstall Cortana
+
+  * Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage
+  * More: https://www.windowscentral.com/how-uninstall-cortana-windows-10-may-2020-update
+
+
+# Review/update privacy settings
+
+  * Settings / Privacy / *
+    * Disable all for Edge
+
+
