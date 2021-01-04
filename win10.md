@@ -42,9 +42,10 @@
   * net users
 
 
-# Uninstall Cortana
+# Uninstall Cortana (if exists)
 
-  * Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage
+  * (as admin) Get-AppxPackage -allusers Microsoft.549981C3F5F10 | Remove-AppxPackage
+  * (as user) Get-AppxPackage Microsoft.549981C3F5F10 | Remove-AppxPackage
   * More: https://www.windowscentral.com/how-uninstall-cortana-windows-10-may-2020-update
 
 
