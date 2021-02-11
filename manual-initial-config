@@ -17,6 +17,8 @@ apt install dos2unix
 apt install net-tools hping3 nmap
 # Password manager
 apt install keepassxc
+# Java
+apt install openjdk-11-jdk
 
 ### Install additional soft
 * IntelliJ
