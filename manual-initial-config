@@ -31,6 +31,23 @@ More info:
     https://unix.stackexchange.com/a/361021/456093
 
 
+### Correct locale
+Change /usr/share/i18n/locales/en_GB
+    mon_decimal_point       "."
+    mon_thousands_sep       "<U202F>"
+
+    decimal_point           "."
+    thousands_sep           "<U202F>"
+
+    d_t_fmt     "%A, %Y.%m.%_d %T %Z"
+    d_fmt       "%Y.%m.%_d"
+    t_fmt       "%T"
+    am_pm       "";""
+    t_fmt_ampm  ""
+    date_fmt    "%A, %Y.%m.%_d %T %Z"
+locale-gen
+
+
 ### Verify locale
 $ locale
 LANG=en_GB.UTF-8
