@@ -54,12 +54,13 @@ Configuration - SSH
 Decrease volume and stop playing
 --------------------------------
 
-Configure Cron (time is UTC)
+Configure Cron
 
 ```
 echo " 0 23   * * *   volumio (date && /usr/local/bin/volumio volume 35) >> /home/volumio/cron.log" >> /etc/crontab
 echo "30 23   * * *   volumio (date && /usr/local/bin/volumio volume 30) >> /home/volumio/cron.log" >> /etc/crontab 
-echo "15  0   * * *   volumio (date && /usr/local/bin/volumio volume 20) >> /home/volumio/cron.log" >> /etc/crontab
+echo " 0  0   * * *   volumio (date && /usr/local/bin/volumio volume 25) >> /home/volumio/cron.log" >> /etc/crontab 
+echo "30  0   * * *   volumio (date && /usr/local/bin/volumio volume 20) >> /home/volumio/cron.log" >> /etc/crontab
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
 ```
 
