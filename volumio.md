@@ -1,3 +1,9 @@
+About
+-----
+
+Volumio configuration template.
+
+
 Configuration - UI
 ------------------
 
@@ -34,9 +40,8 @@ Configuration - SSH
     * sudo apt install cron exim4- (install cron without dependencies)
 
   * Disable the HDMI port (to save power)
-
-      # https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-zero/minimising-power-consumption
-      echo "/opt/vc/bin/tvservice -o" >>  /etc/rc.local   (and correct file manually)
+    * https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-zero/minimising-power-consumption
+    * echo "/opt/vc/bin/tvservice -o" >>  /etc/rc.local   (and correct file manually)
 
 
 
@@ -90,7 +95,7 @@ echo "Starting my playlist ..."
 volumio=localhost:3000/api/v1/commands
 until \$(curl --silent --output /dev/null --head --fail \${volumio}); do
    echo "We wait till volumio is up and running ..."
-   sleep 10s
+   sleep 5s
 done
 
 sleep 20s
@@ -103,26 +108,31 @@ echo "@reboot volumio /opt/volumio-scripts/start-my-playlist.sh >> /home/volumio
 ```
 
 
-Other
+Notes
 -----
 
+```
 sudo nmap -sS -p 22,80,111,139,445,3000,3001,3005,5000,6599,6600,7777,55669 192.168.xxx.xxx
-
 dpkg -S `which rpcbind`
 dpkg -L rpcbind
+```
 
+```
 ls -l /etc/rc*.d/*smbd
 ls -l /etc/rc*.d/*nmbd
 ls -l /etc/rc*.d/*winbind
 ls -l /etc/rc*.d/*samba-ad-dc
 ls -l /etc/rc*.d/*avahi-daemon
 ls -l /etc/rc*.d/*rpcbind
+```
 
+```
 update-rc.d smbd remove
 update-rc.d nmbd remove
 update-rc.d winbind remove
 update-rc.d samba-ad-dc remove
 
-update-rc.d avahi-daemon remove
-update-rc.d rpcbind remove
+#? update-rc.d avahi-daemon remove
+#? update-rc.d rpcbind remove
+```
 
