@@ -1,7 +1,7 @@
 About
 -----
 
-Volumio configuration template.
+Volumio configuration template. Tested on Raspberry Pi 1 Model B.
 
 
 Configuration - UI
@@ -64,7 +64,7 @@ Autostart web radio
 Add playlist
 
 ```
-wget https://github.com/tomikmar/tm-linux-setup/blob/master/volumio/default.json -o /data/playlist/default.json 
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/default.json -O /data/playlist/default.json 
 ```
 
 Add start script
@@ -73,7 +73,7 @@ Add start script
 export CUSTOM_VOLUMIO=/opt/volumio-scripts
 mkdir $CUSTOM_VOLUMIO
 cd $CUSTOM_VOLUMIO
-wget https://github.com/tomikmar/tm-linux-setup/blob/master/volumio/play-default-playlist.sh
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/play-default-playlist.sh
 chmod +x play-default-playlist.sh
 echo "@reboot volumio $CUSTOM_VOLUMIO/play-default-playlist.sh >> /home/volumio/cron.log" >> /etc/crontab
 ```
