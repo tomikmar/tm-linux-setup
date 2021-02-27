@@ -29,6 +29,8 @@ Configuration - SSH
 
   * Temporarily enable SSH: http://192.168.xxx.xxx/dev/
 
+  * Change default passwords
+
   * Update and fix after the update
     * apt update
     * apt upgrade
