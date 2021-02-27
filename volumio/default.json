@@ -1,0 +1,15 @@
+[
+   {
+      "service": "webradio",
+      "type": "webradio",
+      "title": "1.FM - Love Classics (www.1.fm)",
+      "icon": "fa fa-microphone",
+      "uri": "http://yp.shoutcast.com/sbin/tunein-station.m3u?id=1636415",
+      "name": "1.FM - Love Classics (www.1.fm)",
+      "albumart": "/albumart",
+      "samplerate": "",
+      "bitdepth": 0,
+      "channels": 0
+   }
+]
+

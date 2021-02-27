@@ -64,47 +64,18 @@ Autostart web radio
 Add playlist
 
 ```
-cat <<EOF > /data/playlist/web-1fm-love-classics
-[{
-      "service": "webradio",
-      "type": "webradio",
-      "title": "1.FM - Love Classics (www.1.fm)",
-      "icon": "fa fa-microphone",
-      "uri": "http://yp.shoutcast.com/sbin/tunein-station.m3u?id=1636415",
-      "name": "1.FM - Love Classics (www.1.fm)",
-      "albumart": "/albumart",
-      "samplerate": "",
-      "bitdepth": 0,
-      "channels": 0
-}]
-EOF
+wget https://github.com/tomikmar/tm-linux-setup/blob/master/volumio/default.json -o /data/playlist/default.json 
 ```
 
 Add start script
 
 ```
-mkdir /opt/volumio-scripts
-
-cat <<EOF > /opt/volumio-scripts/start-my-playlist.sh
-#!/bin/bash
-#
-# Based on: https://github.com/ch007m/my-volumio-dev
-#
-
-echo "Starting my playlist ..."
-volumio=localhost:3000/api/v1/commands
-until \$(curl --silent --output /dev/null --head --fail \${volumio}); do
-   echo "We wait till volumio is up and running ..."
-   sleep 5s
-done
-
-sleep 20s
-echo "Volumio server is running, so we can launch our playlist ..."
-curl \${volumio}/?cmd='playplaylist&name=web-1fm-love-classics' 
-EOF
-
-chmod +x /opt/volumio-scripts/start-my-playlist.sh
-echo "@reboot volumio /opt/volumio-scripts/start-my-playlist.sh >> /home/volumio/cron.log" >> /etc/crontab
+export CUSTOM_VOLUMIO=/opt/volumio-scripts
+mkdir $CUSTOM_VOLUMIO
+cd $CUSTOM_VOLUMIO
+wget https://github.com/tomikmar/tm-linux-setup/blob/master/volumio/play-default-playlist.sh
+chmod +x play-default-playlist.sh
+echo "@reboot volumio $CUSTOM_VOLUMIO/play-default-playlist.sh >> /home/volumio/cron.log" >> /etc/crontab
 ```
 
 
