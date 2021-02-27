@@ -32,18 +32,22 @@ Configuration - SSH
   * Change default passwords
 
   * Update and fix after the update
-    * apt update
-    * apt upgrade
-    * echo "/opt/vc/lib" >> /etc/ld.so.conf; ldconfig
+    * sudo apt update
+    * sudo apt upgrade
+    * sudo echo "/opt/vc/lib" >> /etc/ld.so.conf
+    * sudo ldconfig
 
-  * Install tools
+  * Install tools 
     * sudo apt install vim
     * select-editor
     * sudo apt install cron exim4- (install cron without dependencies)
 
+  * Set timezone
+    * sudo dpkg-reconfigure tzdata
+
   * Disable the HDMI port (to save some power on battery)
     * https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-zero/minimising-power-consumption
-    * echo "/opt/vc/bin/tvservice -o" >>  /etc/rc.local   (and correct file manually)
+    * sudo echo "/opt/vc/bin/tvservice -o" >> /etc/rc.local   (and correct file manually)
 
 
 
