@@ -39,7 +39,7 @@ Configuration - SSH
     * select-editor
     * sudo apt install cron exim4- (install cron without dependencies)
 
-  * Disable the HDMI port (to save power)
+  * Disable the HDMI port (to save some power on battery)
     * https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-zero/minimising-power-consumption
     * echo "/opt/vc/bin/tvservice -o" >>  /etc/rc.local   (and correct file manually)
 
