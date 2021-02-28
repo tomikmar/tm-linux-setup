@@ -64,7 +64,7 @@ echo "30  0   * * *   volumio (date && /usr/local/bin/volumio volume 20) >> /hom
 
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
 
-echo "@reboot volumio espeak -a 200 "Volumio is starting ..." --stdout | aplay -Dhw:1,0" >> /etc/crontab
+echo "@reboot volumio espeak -a 200 "Volumio is starting." --stdout | aplay -Dhw:1,0" >> /etc/crontab
 
 ```
 
