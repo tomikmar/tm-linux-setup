@@ -1,7 +1,7 @@
 About
 -----
 
-Volumio configuration template. Tested on Raspberry Pi 1 Model B.
+Volumio configuration template. Tested on Raspberry Pi 1 Model B and Volumio 2.x.
 
 
 Configuration - UI
@@ -41,6 +41,7 @@ Configuration - SSH
     * sudo apt install vim
     * select-editor
     * sudo apt install cron exim4- (install cron without dependencies)
+    * sudo apt install espeak
 
   * Set timezone
     * sudo dpkg-reconfigure tzdata
@@ -48,7 +49,6 @@ Configuration - SSH
   * Disable the HDMI port (to save some power on battery)
     * https://raspberry-projects.com/pi/pi-hardware/raspberry-pi-zero/minimising-power-consumption
     * sudo echo "/opt/vc/bin/tvservice -o" >> /etc/rc.local   (and correct file manually)
-
 
 
 Decrease volume and stop playing
@@ -61,7 +61,11 @@ echo " 0 23   * * *   volumio (date && /usr/local/bin/volumio volume 35) >> /hom
 echo "30 23   * * *   volumio (date && /usr/local/bin/volumio volume 30) >> /home/volumio/cron.log" >> /etc/crontab 
 echo " 0  0   * * *   volumio (date && /usr/local/bin/volumio volume 25) >> /home/volumio/cron.log" >> /etc/crontab 
 echo "30  0   * * *   volumio (date && /usr/local/bin/volumio volume 20) >> /home/volumio/cron.log" >> /etc/crontab
+
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
+
+echo "@reboot volumio espeak -a 200 "Volumio is starting ..." --stdout | aplay -Dhw:1,0" >> /etc/crontab
+
 ```
 
 
@@ -113,4 +117,7 @@ update-rc.d samba-ad-dc remove
 #? update-rc.d avahi-daemon remove
 #? update-rc.d rpcbind remove
 ```
+
+aplay -l
+speaker-test -Dhw:1,0 -c2 -twav -l7
 
