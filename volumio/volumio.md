@@ -4,6 +4,7 @@ About
 Volumio configuration template. Tested on Raspberry Pi 1 Model B and Volumio 2.x.
 
 
+
 Configuration - UI
 ------------------
 
@@ -51,16 +52,32 @@ Configuration - SSH
     * sudo echo "/opt/vc/bin/tvservice -o" >> /etc/rc.local   (and correct file manually)
 
 
+
+Download scripts
+----------------
+
+```
+export CUSTOM_VOLUMIO=/opt/volumio-scripts
+mkdir $CUSTOM_VOLUMIO
+cd $CUSTOM_VOLUMIO
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/play-default-playlist.sh
+chmod +x play-default-playlist.sh
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/decrease-volume.sh
+chmod +x decrease-volume.sh
+```
+
+
+
 Decrease volume and stop playing
 --------------------------------
 
 Configure Cron
 
 ```
-echo " 0 23   * * *   volumio (date && /usr/local/bin/volumio volume 35) >> /home/volumio/cron.log" >> /etc/crontab
-echo "30 23   * * *   volumio (date && /usr/local/bin/volumio volume 30) >> /home/volumio/cron.log" >> /etc/crontab 
-echo " 0  0   * * *   volumio (date && /usr/local/bin/volumio volume 25) >> /home/volumio/cron.log" >> /etc/crontab 
-echo "30  0   * * *   volumio (date && /usr/local/bin/volumio volume 20) >> /home/volumio/cron.log" >> /etc/crontab
+echo " 0 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 35 >> /home/volumio/cron.log" >> /etc/crontab
+echo "30 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 30 >> /home/volumio/cron.log" >> /etc/crontab 
+echo " 0  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 25 >> /home/volumio/cron.log" >> /etc/crontab 
+echo "30  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 20 >> /home/volumio/cron.log" >> /etc/crontab
 
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
 
@@ -82,10 +99,6 @@ Add start script
 
 ```
 export CUSTOM_VOLUMIO=/opt/volumio-scripts
-mkdir $CUSTOM_VOLUMIO
-cd $CUSTOM_VOLUMIO
-wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/play-default-playlist.sh
-chmod +x play-default-playlist.sh
 echo "@reboot volumio $CUSTOM_VOLUMIO/play-default-playlist.sh >> /home/volumio/cron.log" >> /etc/crontab
 ```
 
@@ -120,4 +133,12 @@ update-rc.d samba-ad-dc remove
 
 aplay -l
 speaker-test -Dhw:1,0 -c2 -twav -l7
+
+
+oot@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 1 > brightness 
+root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 10 > brightness 
+root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness 
+root@volumio:/sys/class/leds/rt2800usb-phy0::radio# cat brightness   
+255
+root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness A
 
