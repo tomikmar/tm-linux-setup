@@ -1,7 +1,12 @@
 About
 -----
 
-Volumio configuration template. Tested on Raspberry Pi 1 Model B and Volumio 2.x.
+Volumio configuration template. Tested on:
+
+  * Raspberry Pi 1 Model B
+  * USB Wifi Adapter
+  * Speakers connected by 3.5mm jack
+  * Volumio 2.x
 
 
 
@@ -131,6 +136,7 @@ update-rc.d samba-ad-dc remove
 #? update-rc.d rpcbind remove
 ```
 
+```
 aplay -l
 speaker-test -Dhw:1,0 -c2 -twav -l7
 
@@ -141,4 +147,5 @@ root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness
 root@volumio:/sys/class/leds/rt2800usb-phy0::radio# cat brightness   
 255
 root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness A
+```
 
