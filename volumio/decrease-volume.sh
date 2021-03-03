@@ -10,6 +10,7 @@ CURRENT_VOLUME=`volumio volume`
 if [ "$CURRENT_VOLUME" -gt "$REQUESTED_VOLUME" ]; then
        	echo `date +"%Y-%m-%d-%H:%M:%S:"` "Decreasing volume from $CURRENT_VOLUME to $REQUESTED_VOLUME."
 	volumio volume $REQUESTED_VOLUME
+	echo
 else
        	echo `date +"%Y-%m-%d-%H:%M:%S:"` "Current volume $CURRENT_VOLUME is already below requested value $REQUESTED_VOLUME. Ignoring."
 fi

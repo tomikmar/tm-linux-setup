@@ -5,7 +5,7 @@ Volumio configuration template. Tested on:
 
   * Raspberry Pi 1 Model B
   * USB Wifi Adapter
-  * Speakers connected by 3.5mm jack
+  * Creative Pebble V2 speakers connected by 3.5mm jack (powered by USB)
   * Volumio 2.x
 
 
