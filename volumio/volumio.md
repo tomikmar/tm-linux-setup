@@ -4,7 +4,7 @@ About
 Volumio configuration template. Tested on:
 
   * Raspberry Pi 1 Model B
-  * USB Wifi Adapter
+  * USB Wifi Adapter (148f:5370 -> modinfo rt2800usb)
   * Creative Pebble V2 speakers connected by 3.5mm jack (powered by USB)
   * Volumio 2.x
 
@@ -91,6 +91,7 @@ echo "@reboot volumio espeak -a 200 "Volumio is starting." --stdout | aplay -Dhw
 ```
 
 
+
 Autostart web radio
 -------------------
 
@@ -108,8 +109,9 @@ echo "@reboot volumio $CUSTOM_VOLUMIO/play-default-playlist.sh >> /home/volumio/
 ```
 
 
-Notes
------
+
+Notes (WIP)
+-----------
 
 ```
 sudo nmap -sS -p 22,80,111,139,445,3000,3001,3005,5000,6599,6600,7777,55669 192.168.xxx.xxx
@@ -139,13 +141,5 @@ update-rc.d samba-ad-dc remove
 ```
 aplay -l
 speaker-test -Dhw:1,0 -c2 -twav -l7
-
-
-oot@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 1 > brightness 
-root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 10 > brightness 
-root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness 
-root@volumio:/sys/class/leds/rt2800usb-phy0::radio# cat brightness   
-255
-root@volumio:/sys/class/leds/rt2800usb-phy0::radio# echo 255 > brightness A
 ```
 
