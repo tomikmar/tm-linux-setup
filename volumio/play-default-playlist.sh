@@ -27,4 +27,5 @@ volumio volume 35
 
 echo
 echo `date +"%Y-%m-%d-%H:%M:%S:"` "Playlist: $PLAYLIST started."
+[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 5
 

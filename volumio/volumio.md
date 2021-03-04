@@ -69,6 +69,8 @@ wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/play-default-
 chmod +x play-default-playlist.sh
 wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/decrease-volume.sh
 chmod +x decrease-volume.sh
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/illuminate.sh
+chmod +x illuminate.sh
 ```
 
 
@@ -106,6 +108,17 @@ Add start script
 ```
 export CUSTOM_VOLUMIO=/opt/volumio-scripts
 echo "@reboot volumio $CUSTOM_VOLUMIO/play-default-playlist.sh >> /home/volumio/cron.log" >> /etc/crontab
+```
+
+
+
+Add illumination
+----------------
+
+Allow users to enable/disable wifi activity LED to visualize some actions.
+
+```
+chmod o+w /sys/class/leds/rt2800usb-phy0::assoc/brightness
 ```
 
 

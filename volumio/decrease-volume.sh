@@ -9,6 +9,7 @@ CURRENT_VOLUME=`volumio volume`
 
 if [ "$CURRENT_VOLUME" -gt "$REQUESTED_VOLUME" ]; then
        	echo `date +"%Y-%m-%d-%H:%M:%S:"` "Decreasing volume from $CURRENT_VOLUME to $REQUESTED_VOLUME."
+	[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 10
 	volumio volume $REQUESTED_VOLUME
 	echo
 else
