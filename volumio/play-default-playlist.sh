@@ -36,9 +36,9 @@ elif [ $HOUR -lt 19 ]; then
   volumio volume 40
   curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
 else
-  log "Starting evening playlist $PLAYLIST_AFTERNOON ..."
+  log "Starting evening playlist $PLAYLIST_EVENING ..."
   volumio volume 30
-  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_AFTERNOON"
+  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_EVENING"
 fi
 echo
 

@@ -65,12 +65,11 @@ Download scripts
 export CUSTOM_VOLUMIO=/opt/volumio-scripts
 mkdir $CUSTOM_VOLUMIO
 cd $CUSTOM_VOLUMIO
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/common.sh
 wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/play-default-playlist.sh
-chmod +x play-default-playlist.sh
 wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/decrease-volume.sh
-chmod +x decrease-volume.sh
 wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/illuminate.sh
-chmod +x illuminate.sh
+chmod +x *.sh
 ```
 
 
