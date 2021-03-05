@@ -4,7 +4,7 @@
 # Based on: https://github.com/ch007m/my-volumio-dev
 #
 
-source common.sh
+source /opt/volumio-scripts/common.sh
 
 PLAYLIST_MORNING="default-morning.json"
 PLAYLIST_AFTERNOON="default-morning.json"

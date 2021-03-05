@@ -3,7 +3,7 @@
 [ -z "$1" ] && echo "Provide requested volume as the first parameter (0-100)" && exit 1
 [ ! -z "${1##[0-9]*}" ] && echo "First parameter must be a number (0-100)" && exit 2
 
-source common.sh
+source /opt/volumio-scripts/common.sh
 
 REQUESTED_VOLUME=$1
 CURRENT_VOLUME=`volumio volume`
