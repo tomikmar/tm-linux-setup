@@ -4,13 +4,16 @@
 # Based on: https://github.com/ch007m/my-volumio-dev
 #
 
-PLAYLIST="default.json"
+source common.sh
+
+PLAYLIST_MORNING="default-morning.json"
+PLAYLIST_AFTERNOON="default-morning.json"
+PLAYLIST_EVENING="default-evening.json"
 VOLUMIO_BASE_URL=http://localhost:3000/api/v1/commands
 
-echo `date +"%Y-%m-%d-%H:%M:%S:"` "Starting playlist: $PLAYLIST ..."
 
 until $(curl --silent --output /dev/null --head --fail ${VOLUMIO_BASE_URL}); do
-   echo "Waiting till Volumio is up and running ..."
+   log "Waiting till Volumio is up and running ..."
    sleep 10s
    espeak -a 200 "Just a moment." --stdout | aplay -Dhw:1,0
 done
@@ -19,13 +22,26 @@ sleep 10s
 espeak -a 200 "Almost ready." --stdout | aplay -Dhw:1,0
 sleep 10s
 
-echo "Volumio server is running, so we can launch our playlist ..."
+log "Volumio server is running, so we can launch our playlist ..."
 espeak -a 200 "Volumio is running. Starting playlist." --stdout | aplay -Dhw:1,0
-curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST"
 
-volumio volume 35
 
+HOUR=`date +%H`
+if [ $HOUR -lt 11 ]; then
+  log "Starting morning playlist $PLAYLIST_MORNING ..."
+  volumio volume 40
+  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
+elif [ $HOUR -lt 19 ]; then
+  log "Starting afternoon playlist $PLAYLIST_MORNING ..."
+  volumio volume 40
+  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
+else
+  log "Starting evening playlist $PLAYLIST_AFTERNOON ..."
+  volumio volume 30
+  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_AFTERNOON"
+fi
 echo
-echo `date +"%Y-%m-%d-%H:%M:%S:"` "Playlist: $PLAYLIST started."
+
+log "Playlist started."
 [ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 5
 

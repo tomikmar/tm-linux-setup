@@ -89,7 +89,6 @@ echo "30  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 20 >> /hom
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
 
 echo "@reboot volumio espeak -a 200 "Volumio is starting." --stdout | aplay -Dhw:1,0" >> /etc/crontab
-
 ```
 
 
@@ -100,7 +99,8 @@ Autostart web radio
 Add playlist
 
 ```
-wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/default.json -O /data/playlist/default.json 
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/playlists/default-morning.json -O /data/playlist/default-morning.json 
+wget https://github.com/tomikmar/tm-linux-setup/raw/master/volumio/playlists/default-evening.json -O /data/playlist/default-evening.json 
 ```
 
 Add start script
