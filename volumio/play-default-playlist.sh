@@ -42,5 +42,5 @@ fi
 echo
 
 log "Playlist started."
-[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 5
+illuminate 5
 

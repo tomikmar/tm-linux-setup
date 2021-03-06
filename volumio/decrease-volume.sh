@@ -17,5 +17,5 @@ else
     log "Current volume $CURRENT_VOLUME is already below or equal to requested value $REQUESTED_VOLUME. Ignoring."
 fi
 
-[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 10
+illuminate 10
 
