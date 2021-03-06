@@ -85,7 +85,6 @@ echo " 0 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 35 >> /hom
 echo "30 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 30 >> /home/volumio/cron.log" >> /etc/crontab 
 echo " 0  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 25 >> /home/volumio/cron.log" >> /etc/crontab 
 echo "30  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 20 >> /home/volumio/cron.log" >> /etc/crontab
-
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
 
 echo "@reboot volumio espeak -a 200 "Volumio is starting." --stdout | aplay -Dhw:1,0" >> /etc/crontab
@@ -118,7 +117,7 @@ Add illumination
 Allow users to enable/disable wifi activity LED to visualize some actions.
 
 ```
-chmod o+w /sys/class/leds/rt2800usb-phy0::assoc/brightness
+echo "@reboot root chmod o+w /sys/class/leds/rt2800usb-phy0::assoc/brightness" >> /etc/crontab
 ```
 
 
