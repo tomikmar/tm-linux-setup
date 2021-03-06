@@ -13,17 +13,16 @@ VOLUMIO_BASE_URL=http://localhost:3000/api/v1/commands
 
 
 until $(curl --silent --output /dev/null --head --fail ${VOLUMIO_BASE_URL}); do
-   log "Waiting till Volumio is up and running ..."
+   logAndSay "Waiting till Volumio is up and running ..."
    sleep 10s
-   espeak -a 200 "Just a moment." --stdout | aplay -Dhw:1,0
 done
 
-sleep 10s
-espeak -a 200 "Almost ready." --stdout | aplay -Dhw:1,0
-sleep 10s
 
-log "Volumio server is running, so we can launch our playlist ..."
-espeak -a 200 "Volumio is running. Starting playlist." --stdout | aplay -Dhw:1,0
+say "Just a moment."
+sleep 10s
+say "Almost ready."
+sleep 10s
+logAndSay "Volumio server is running. Starting playlist ..."
 
 
 HOUR=`date +%H`
