@@ -10,11 +10,12 @@ CURRENT_VOLUME=`volumio volume`
 
 
 if [ "$CURRENT_VOLUME" -gt "$REQUESTED_VOLUME" ]; then
-       	log "Decreasing volume from $CURRENT_VOLUME to $REQUESTED_VOLUME."
-	[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 10
-	volumio volume $REQUESTED_VOLUME
-	echo
+    log "Decreasing volume from $CURRENT_VOLUME to $REQUESTED_VOLUME."
+    volumio volume $REQUESTED_VOLUME
+    echo
 else
-       	log "Current volume $CURRENT_VOLUME is already below or equal to requested value $REQUESTED_VOLUME. Ignoring."
+    log "Current volume $CURRENT_VOLUME is already below or equal to requested value $REQUESTED_VOLUME. Ignoring."
 fi
+
+[ -f /opt/volumio-scripts/illuminate.sh ] && /opt/volumio-scripts/illuminate.sh 10
 

@@ -13,8 +13,8 @@ VOLUMIO_BASE_URL=http://localhost:3000/api/v1/commands
 
 
 until $(curl --silent --output /dev/null --head --fail ${VOLUMIO_BASE_URL}); do
-   logAndSay "Waiting till Volumio is up and running ..."
-   sleep 10s
+    logAndSay "Waiting till Volumio is up and running ..."
+    sleep 10s
 done
 
 
@@ -27,17 +27,17 @@ logAndSay "Volumio server is running. Starting playlist ..."
 
 HOUR=`date +%H`
 if [ $HOUR -lt 11 ]; then
-  log "Starting morning playlist $PLAYLIST_MORNING ..."
-  volumio volume 40
-  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
+    log "Starting morning playlist $PLAYLIST_MORNING ..."
+    volumio volume 40
+    curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
 elif [ $HOUR -lt 19 ]; then
-  log "Starting afternoon playlist $PLAYLIST_MORNING ..."
-  volumio volume 40
-  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
+    log "Starting afternoon playlist $PLAYLIST_MORNING ..."
+    volumio volume 40
+    curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_MORNING"
 else
-  log "Starting evening playlist $PLAYLIST_EVENING ..."
-  volumio volume 30
-  curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_EVENING"
+    log "Starting evening playlist $PLAYLIST_EVENING ..."
+    volumio volume 30
+    curl "${VOLUMIO_BASE_URL}/?cmd=playplaylist&name=$PLAYLIST_EVENING"
 fi
 echo
 
