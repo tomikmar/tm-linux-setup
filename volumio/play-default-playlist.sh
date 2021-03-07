@@ -9,7 +9,7 @@ source /opt/volumio-scripts/common.sh
 PLAYLIST_MORNING="default-morning.json"
 PLAYLIST_AFTERNOON="default-morning.json"
 PLAYLIST_EVENING="default-evening.json"
-VOLUMIO_BASE_URL=http://localhost:3000/api/v1/commands
+VOLUMIO_BASE_URL=http://localhost:3000/api/v1/getState
 
 
 until $(curl --silent --output /dev/null --head --fail ${VOLUMIO_BASE_URL}); do
