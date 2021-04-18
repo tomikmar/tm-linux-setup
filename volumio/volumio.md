@@ -75,18 +75,25 @@ chmod +x *.sh
 
 
 
-Decrease volume and stop playing
---------------------------------
+Configure cron
+--------------
 
-Configure Cron
+Morning settings
+```
+echo "30  9   * * *   volumio volumio volume 35 >> /home/volumio/cron.log" >> /etc/crontab
+```
 
+Night settings - decrease volume and stop playing
 ```
 echo " 0 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 35 >> /home/volumio/cron.log" >> /etc/crontab
 echo "30 23   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 30 >> /home/volumio/cron.log" >> /etc/crontab 
-echo " 0  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 25 >> /home/volumio/cron.log" >> /etc/crontab 
-echo "30  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 20 >> /home/volumio/cron.log" >> /etc/crontab
+echo " 0  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 24 >> /home/volumio/cron.log" >> /etc/crontab 
+echo "30  0   * * *   volumio /opt/volumio-scripts/decrease-volume.sh 19 >> /home/volumio/cron.log" >> /etc/crontab
 echo " 0  1   * * *   volumio (date && /usr/local/bin/volumio stop) >> /home/volumio/cron.log" >> /etc/crontab
+```
 
+Other
+```
 echo "@reboot volumio espeak -a 200 "Volumio is starting." --stdout | aplay -Dhw:1,0" >> /etc/crontab
 ```
 
