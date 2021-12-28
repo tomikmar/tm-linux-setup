@@ -33,7 +33,7 @@
   * Advanced
     * Boot Options
       * Network (PXE) Boot -> Disable
-      * Audio Alerts During Boot -> Diable
+      * Audio Alerts During Boot -> Disable
 
     * Secure Boot Configuration
       * Configure Legacy Support and Secure Boot -> LS Disable & SB Enable
