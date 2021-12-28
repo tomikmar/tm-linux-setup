@@ -128,3 +128,8 @@
 * [c] Backup
 
 
+## About phone
+
+* [c] Emergency information / Emergency contacts
+
+
