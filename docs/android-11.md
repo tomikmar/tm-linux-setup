@@ -2,7 +2,10 @@
 # Android 11 / 2021.12
 
 
-## Network & internet
+
+## Settings
+
+### Network & internet
 
 * [+] Wi-Fi / Wi-Fi preferences / Turn on Wi-Fi automatically
 
@@ -18,7 +21,7 @@
 * [c] Private DNS
 
 
-## Connected devices
+### Connected devices
 
 * [c] Connection preferences / Bluetooth / Device name
 * [+] Connection preferences / NFC
@@ -27,22 +30,25 @@
 * [?] Connection preferences / Printing / Default Print Service
 
 
-## Apps & Notifications
+### Apps & Notifications
 
 * [-] Notifications / Sensitive notifications
 * [c] Notifications / Default notification sound
 * [c] Notifications / Do Not Disturb / Schedules / Sleeping
 
 * [c] Default apps
+* [-] Default apps / Opening links / Instant apps
+
 * [r] Permission manager
+* [r] Special app access
 
 
-## Battery
+### Battery
 
 * [c] Battery saver and performance / Automatic power saver (25%)
 
 
-## Disaplay
+### Disaplay
 
 * [c] Night Light / Schedule & Start time (22:30) & End time (06:00)
 * [c] Styles & wallppers
@@ -59,7 +65,7 @@
 
 
 
-## Sound
+### Sound
 
 * [+] Link ring & notification volumes
 * [c] Increasing ring volume
@@ -70,25 +76,25 @@
 * [-] Touch sounds
 
 
-## Storage
+### Storage
 
 * [-] Storage manager
 
 
-## Privacy
+### Privacy
 
 * [r] Permission manager (already reviewed above)
 * [+] Show passwords
 * [+] Trust / Restrict USB
 
 
-## Location
+### Location
 
 * [+] Wi-Fi and Bluetooth scanning / Wi-Fi scanning 
 * [-] Wi-Fi and Bluetooth scanning / Bluetooth scanning
 
 
-## Security
+### Security
 
 * [c] Screen lock
 * [-] Screen lock / S / Make pattern visible
@@ -98,12 +104,12 @@
 * [c] SIM card lock / Lock SIM card
 
 
-## Accessibility
+### Accessibility
 
 * [c] System navigation / Gesture navigation
 
 
-## System
+### System
 
 * [c] Languages & input / Languages
 * [c] Languages & input / On-screen keyboard
@@ -128,8 +134,14 @@
 * [c] Backup
 
 
-## About phone
+### About phone
 
 * [c] Emergency information / Emergency contacts
+
+
+
+## Messaging
+
+* [+] Settings / Advanced / SMS delivery reports
 
 
