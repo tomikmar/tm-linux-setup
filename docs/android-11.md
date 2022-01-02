@@ -12,6 +12,7 @@
 * [-] Mobile network / Roaming
 * [c] Mobile network / App data usage / S / Mobile data usage cycle
 * [c] Mobile network / Data warning & limit
+* [+] Mobile network / MMS messages (Mobile data above must be switched off to access this option)
 * [-] Mobile network / Wi-Fi calling 
 * [?] Mobile network / Carrier video calling 
 * [c] Mobile network / Access Point Names
@@ -132,6 +133,8 @@
 * [+] Date & time / Use 24-hour format
 
 * [c] Backup
+
+* [-] Developer options / USB debugging
 
 
 ### About phone
