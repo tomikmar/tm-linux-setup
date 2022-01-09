@@ -33,6 +33,7 @@
   * Advanced
     * Boot Options
       * Network (PXE) Boot -> Disable
+      * Power On When Lid id Opened -> Enable
       * Audio Alerts During Boot -> Disable
 
     * Secure Boot Configuration
@@ -48,15 +49,29 @@
       * Backlit keyboard timeout -> 1 min.
       * Fingerprint Devive -> Disable
 
+    * Power Management Options
+      * Wake when Lid is Opened -> Enable
+
     * Remote Management Options
       * Active Management (AMT) -> Disable
 
 
 ## Run Memtest
 
+  * https://www.memtest86.com
+
 
 ## BIOS Docs
 
   * http://h10032.www1.hp.com/ctg/Manual/c06114605
 
+
+# HP Cloud Recovery
+
+  * HP Cloud Recovery Supported Platforms
+    * https://ftp.ext.hp.com/pub/caps-softpaq/CloudRecovery/crsupportedplatform.html
+  * HP Business PCs - Using the HP Cloud Recovery Download Tool
+    * https://support.hp.com/us-en/document/c05115630
+  * Cloud Recovery Client
+    * VERSION: 2.9.1.26376 - sp135957.exe
 
