@@ -100,7 +100,7 @@
 * [c] Screen lock
 * [-] Screen lock / S / Make pattern visible
 * [c] Screen lock / S / Lock after screen timeout (30s)
-* [+] Screen lock / S / Power bitton instantly locks
+* [+] Screen lock / S / Power button instantly locks
 
 * [c] SIM card lock / Lock SIM card
 
@@ -146,5 +146,47 @@
 ## Messaging
 
 * [+] Settings / Advanced / SMS delivery reports
+
+
+
+## ADB backup (tested on Android 9)
+
+### Get selected apps without data
+
+* adb shell pm
+* adb shell pm list packages -f -3 > my-apps1.txt
+  * -f: see their associated file
+  * -3: filter to only show third party packages
+* vim my-apps1.txt
+* get apps without data
+
+  for APP in $(cat my-apps1.txt)
+  do
+    adb pull $( echo ${APP} | sed "s/^package://" | sed "s/base.apk=/base.apk /").apk
+  done
+
+
+### Get selected apps data
+
+* adb shell pm list packages -3 | sed "s/^package://" > my-apps2.txt
+* vim my-apps2.txt
+* Get data
+
+  for APP in $(cat my-apps2.txt)
+  do
+    echo "Downloading data for ${APP} ..."
+    adb backup -f ${APP}.backup3 ${APP}
+  done
+
+
+### Restore app (partially works)
+
+* adb install application.apk
+* adb restore application.backup
+
+
+### More examples
+
+* https://gist.github.com/AnatomicJC/e773dd55ae60ab0b2d6dd2351eb977c1
 
 
