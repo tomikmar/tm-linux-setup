@@ -66,6 +66,11 @@
   * http://h10032.www1.hp.com/ctg/Manual/c06114605
 
 
+# Upgrade TPM firmware (1.2 to 2.0)
+
+  * https://support.hp.com/us-en/document/c05381064
+
+
 # HP Cloud Recovery
 
   * HP Cloud Recovery Supported Platforms
