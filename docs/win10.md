@@ -12,9 +12,10 @@
   * LibreOffice
   * 7zip
   * Notepad++
+  * BeyondCompare
 
 
-# Remove apps
+# Remove unused apps
 
   * Remove One, Mail, ...
 
@@ -38,8 +39,13 @@
 
 # Create standard local account
 
-  * Settings / Accounts / Family & other users / Add someone else to this PC
-  * net users
+  * Set password for the current admin user
+  * net users newNotAdminUsername /add
+  * Review
+    * net users
+    * net localgroup
+    * lusrmgr.msc
+  * (Alternatively) Settings / Accounts / Family & other users / Add someone else to this PC
 
 
 # Uninstall Cortana (if exists)

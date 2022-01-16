@@ -4,7 +4,7 @@ sudo update-alternatives --config editor
 
 ### Install soft by apt
 # Tools
-apt install colordiff mc pv jq httpie whois hexdiff xclip
+apt install colordiff mc pv jq httpie whois hexdiff xclip p7zip-full
 # Hex editor
 apt install wxhexeditor
 # Amator radio soft
@@ -18,7 +18,9 @@ apt install net-tools hping3 nmap
 # Password manager
 apt install keepassxc
 # Java
-apt install openjdk-11-jdk
+apt install openjdk-17-jdk
+# Pictures
+apt install exiftool
 
 
 ### Correct strange sort order for underscore
