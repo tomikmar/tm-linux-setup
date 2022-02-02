@@ -51,6 +51,7 @@
 
     * Power Management Options
       * Wake when Lid is Opened -> Enable
+      * Battery Health Manager
 
     * Remote Management Options
       * Active Management (AMT) -> Disable
