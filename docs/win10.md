@@ -64,6 +64,7 @@ Create local admin account
   * net users someAdminUsername *
   * net localgroup Administrators someAdminUsername /add
   * net localgroup Users someAdminUsername /delete
+  * wmic UserAccount where Name=”someAdminUsername” set PasswordExpires=False
   * Loout/login
 
 Change current account to standard one
