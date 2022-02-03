@@ -70,6 +70,7 @@
 # Upgrade TPM firmware (1.2 to 2.0)
 
   * https://support.hp.com/us-en/document/c05381064
+    * sp81900.exe
 
 
 # HP Cloud Recovery

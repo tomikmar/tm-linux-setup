@@ -9,10 +9,22 @@
 # Install apps
 
   * Firefox
+  * Notepad++
   * LibreOffice
   * 7zip
-  * Notepad++
   * BeyondCompare
+  * SMPlayer
+
+
+# Firefox
+
+  * Search
+    * Search Bar / Add search bar in toolbar
+    * Default Search Engine / DuckDuckGo
+  * Privacy & Security
+    * Enhanced Tracking Protection / Strict
+    * Permissions / Autoplay / Block Audio and Video
+  * Extensions / Add "uBlock Origin"
 
 
 # Remove unused apps
@@ -34,6 +46,7 @@
 
 # Enable BitLocker
 
+  * tpm.msc - make sure that TPM firmware is upgraded to 2.0 (if possible)
   * c: / enable BitLocker
 
 
