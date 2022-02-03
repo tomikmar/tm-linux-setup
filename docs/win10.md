@@ -50,15 +50,28 @@
   * c: / enable BitLocker
 
 
-# Create standard local account
+# Configure accounts
 
-  * Set password for the current admin user
-  * net users newNotAdminUsername /add
-  * Review
-    * net users
-    * net localgroup
-    * lusrmgr.msc
-  * (Alternatively) Settings / Accounts / Family & other users / Add someone else to this PC
+Create local admin account
+
+  * net users someAdminUsername /add
+  * net users someAdminUsername *
+  * net localgroup Administrators someAdminUsername /add
+  * net localgroup Users someAdminUsername /delete
+  * Loout/login
+
+Change current account to standard one
+
+  * net localgroup Users currentUsername /add
+  * net localgroup Administrators currentUsername /delete
+  * Loout/login
+ 
+Review settings
+
+  * net users
+  * net localgroup
+  * lusrmgr.msc
+  * Settings / Accounts / Family & other users
 
 
 # Uninstall Cortana (if exists)
