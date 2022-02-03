@@ -39,9 +39,15 @@
     * Enable: Telnet Client
 
 
-# Disable Fast Startup
+# Configure power management
 
-  * powercfg.cpl / Turn on fast startup -> Disable
+  * powercfg.cpl
+    * Choose what the power buttons do
+      * Turn on fast startup -> Disable
+      * Hibernate -> Enable
+    * Change when the computer sleeps
+      * Review
+      * Change advanced power settings / Sleep / Hibernate after
 
 
 # Enable BitLocker
