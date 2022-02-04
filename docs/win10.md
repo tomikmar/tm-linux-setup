@@ -60,12 +60,14 @@
 
 Create local admin account
 
-  * net users someAdminUsername /add
-  * net users someAdminUsername *
+  * net user someAdminUsername /add
+  * net user someAdminUsername *
+  * net user someAdminUsername /passwordreq:yes
   * net localgroup Administrators someAdminUsername /add
   * net localgroup Users someAdminUsername /delete
   * wmic UserAccount where Name=”someAdminUsername” set PasswordExpires=False
   * Loout/login
+  * Set red background for admin user
 
 Change current account to standard one
 
@@ -75,7 +77,7 @@ Change current account to standard one
  
 Review settings
 
-  * net users
+  * net user
   * net localgroup
   * lusrmgr.msc
   * Settings / Accounts / Family & other users
@@ -88,9 +90,15 @@ Review settings
   * More: https://www.windowscentral.com/how-uninstall-cortana-windows-10-may-2020-update
 
 
+# Configure devices
+
+  * Settings / Devices
+    * Bluetooth & other devices / Bluetooth -> Off
+    * Autoplay -> Off
+
+
 # Review/update privacy settings
 
   * Settings / Privacy / *
     * Disable all for Edge
-
 
