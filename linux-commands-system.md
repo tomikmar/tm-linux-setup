@@ -5,6 +5,28 @@ Ctrl+C, Ctrl+V
 
 
 
+Pictures - exiftool
+-------------------
+    exiftool img1.jpg 
+    exiftool -all= img1.jpg 
+
+
+
+Pictures - ImageMagick
+----------------------
+    convert -resize 25% img1.jpg img2.jpg
+    identify -verbose m.jpg
+
+
+
+Video
+-----
+    ffmpeg -i infile -vf "scale=iw/2:ih/2" outfile
+    ffmpeg -i infile -vf "scale=iw/2:ih/2" -b:v 150k outfile
+    ffmpeg -i infile -vf "scale=iw/4:ih/4" -b:v 140k -b:a 64k outfile
+
+
+
 Memory
 ------
     free -g / free -m
