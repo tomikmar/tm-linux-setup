@@ -85,3 +85,15 @@ TTS - pico
     cat text.txt | pico2wave -w a.wav 
     aplay a.wav
 
+
+
+Prepare flash drive
+-------------------
+    lsblk -f
+    dmesg
+    hexdump -C /dev/MY-DISK
+    fdisk -l
+    fdisk /dev/MY-DISK
+	ntfs,exfat -> 7 HPFS/NTFS/exFAT
+    mkfs.exfat /dev/MY-DISK-PARTITION
+
