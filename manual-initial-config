@@ -74,3 +74,8 @@ LC_ALL=
 * Beyond Compare
 * Visual Studio Code
 
+
+### Uninstall
+* apt list --installed | grep thunderbird
+* apt-get purge thunderbird*
+
