@@ -13,12 +13,13 @@
 
   * Security
     * Hard Drive Utilities / Secure Erase
+    * Advanced / HP Sure Recover / HP Sure Recover -> Disable (to speed up reboot required for cleanup below)
     * Restore Security Settings To Factory Defaults
     * TPM Embedded Security / Clear TPM
-    * BIOS SureStart / Network Controller Configuration Restore
+    * BIOS SureStart / Network Controller Configuration Restore (if enabled)
 
   * Advanced
-    * Secure Boot Configuration / Reset Secure Boot keys to factory defaults
+    * Secure Boot Configuration / Reset Secure Boot keys to factory defaults (if enabled)
     * Secure Boot Configuration / Configure Legacy Support and Secure Boot -> Legacy Support Enable and Secure Boot Disable
        * To allow Memtest86+ to boot
 
