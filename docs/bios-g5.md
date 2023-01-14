@@ -54,10 +54,12 @@
     * System Options
       * Virtualization Technology (VTx) -> Enabled
       * Virtualization Technology for Directed I/O (VTd) -> Enabled
-      * Launch Hotkeys without Fn Keypress -> Disable (?)
+      * Launch Hotkeys without Fn Keypress -> Disable (= enable function keys by default) 
+      * Enable Turbo Boost on DC
 
     * Build-In Device Options
       * Wake On LAN -> Disabled
+      * Video memory size -> 256MB
       * Backlit keyboard timeout -> 1 min.
       * Fingerprint Devive -> Disable
 
@@ -72,7 +74,10 @@
 
 ## BIOS Docs
 
-  * http://h10032.www1.hp.com/ctg/Manual/c06114605
+  * HP PC Commercial BIOS (UEFI) Setup - Administration Guide For Commercial Platforms using HP BIOSphere Gen 3-5 2016-2019
+    * http://h10032.www1.hp.com/ctg/Manual/c06399361 
+  * HP PC Commercial BIOS (UEFI) Setup - Administration Guide For Commercial Platforms using HP BIOSphere Gen 3-5 2016-2018
+    * http://h10032.www1.hp.com/ctg/Manual/c06114605
 
 
 
