@@ -1,5 +1,17 @@
-# Install Win11
+# Windows 11 installation guide
 
+
+## Prepare installer
+
+  * Download Windows 11: 
+     https://www.microsoft.com/en-us/software-download/windows11
+
+
+## Initial configuration
+
+  * Use local accounts
+    * First account will be admin account
+    * Proper user account will be added later
   * Windows Update -> Install all updates
   * cleanmgr.exe / Clean up system files
   * Set red background for admin user
@@ -15,7 +27,14 @@
     ```
 
 
-# Remove unused apps
+##  G5 notebook only - Verify graphic card driver 
+  * should be Intel, not Microsoft
+  * Download the latest Intel version if needed
+
+
+## Remove unused apps
+
+  * Microsoft One, Mail, News, Teams, To Do, ...
 
   * Remove installed app for all users
     * [OK] Get-AppxPackage -allusers *MicrosoftOfficeHub* | Remove-AppxPackage
@@ -24,7 +43,7 @@
     * [??] Get-AppxPackage -allusers *BingNews* | Remove-AppxPackage
     * [??] Get-AppxPackage -allusers *OneDriveSync*
     * [??] Get-AppxPackage -allusers *communicationsapps*
-    * [??] Get-AppxPackage *WebExperience* | Remove-AppxPackage
+    * [??] Get-AppxPackage -allusers *WebExperience* | Remove-AppxPackage
 
   * Remove app for future users
     * [OK] Get-AppxProvisionedPackage –online | where-object {$_.packagename –like "*MicrosoftOfficeHub*"} | Remove-AppxProvisionedPackage –online
@@ -34,18 +53,18 @@
     * [OK] Get-AppxProvisionedPackage –online | where-object {$_.packagename –like "*WebExperience*"} | Remove-AppxProvisionedPackage –online
 
 
-# Enable BitLocker
+## Enable BitLocker
 
   * c: / enable BitLocker
 
 
-# Select Windows functions
+## Select Windows functions
 
   * appwiz.cpl / Turn Windows features on and off
     * Enable: Windows Sandbox
 
 
-# Configure power management
+## Configure power management
 
   * powercfg.cpl
     * Choose what the power buttons do
@@ -56,24 +75,24 @@
       * Change advanced power settings / Sleep / Hibernate after
 
 
-# Configure devices
+## Configure devices
 
   * Settings
     * Bluetooth & devices / Bluetooth -> Off
     * Autoplay -> Off
 
 
-# Install apps
+## Install apps
 
   * Firefox
-  * Notepad++
+  * Notepad++ or Visual Studio Code
   * LibreOffice
   * 7zip
   * BeyondCompare
   * SMPlayer
 
 
-# Configure accounts
+## Configure accounts
 
 Add aditional user and set password
 
@@ -90,7 +109,7 @@ Review accounts
   * Settings / Accounts
 
 
-# Firefox
+## Firefox
 
   * Search
     * Search Bar / Add search bar in toolbar
@@ -101,7 +120,7 @@ Review accounts
   * Extensions / Add "uBlock Origin"
 
 
-# Install WSL2 and Ubuntu (only for user who needs this)
+## Install WSL2 and Ubuntu (only for user who needs this)
 
   * wsl --status
   * wsl --list --online
@@ -109,5 +128,8 @@ Review accounts
   * wsl --list -v
 
 
-# Review above for new user
+## Additional non-admin user configuration
+
+  * Review above for a new user
+  * Remove apps from start menu
 
