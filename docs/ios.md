@@ -1,6 +1,26 @@
 iOS: 18.3.1
 
-Settings / Privacy & Security -> Review 
+
+Settings
+--------
+
+
+Wi-Fi / Ask to Join Networks -> Off
+
+
+Bluetooth -> Off (if not used)
+
+
+Battery / Charging / Charge limit
+
+
+Search
+  * Search Engine -> DuckDucGo
+  * Help Apple Improve Search -> Off
+
+Sounds & Haptics / Ringtone and Alerts / Change with Buttons -> Off
+
+Privacy & Security -> Review 
 
   * Location Services
   * Tracking -> Off
@@ -33,5 +53,10 @@ iCloud
 
 
 Apps / Health
+
+  * App Store
+    * App Downloads -> Off
+    * Video Autoplay -> Off
+    * In-Apps Rating & Reviews -> Off
 
   * Medical ID -> Add Emergency Contacts
