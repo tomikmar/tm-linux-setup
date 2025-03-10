@@ -25,6 +25,14 @@
     [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
     "BingSearchEnabled"=dword:00000000
     ```
+  * Revert old right-click menu
+    ```
+    reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
+    /f  Adds the registry entry without prompting for confirmation.
+    /ve Specifies that the added registry entry has a null value.
+   ```
+
 
 
 ##  G5 notebook only - Verify graphic card driver 
