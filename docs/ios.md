@@ -4,6 +4,8 @@ iOS: 18.3.1
 Settings
 --------
 
+[Name] / Contact Key Verification -> On
+
 
 Wi-Fi / Ask to Join Networks -> Off
 
@@ -18,7 +20,10 @@ Search
   * Search Engine -> DuckDucGo
   * Help Apple Improve Search -> Off
 
+
 Sounds & Haptics / Ringtone and Alerts / Change with Buttons -> Off
+
+
 
 Privacy & Security -> Review 
 
@@ -60,3 +65,4 @@ Apps / Health
     * In-Apps Rating & Reviews -> Off
 
   * Medical ID -> Add Emergency Contacts
+
