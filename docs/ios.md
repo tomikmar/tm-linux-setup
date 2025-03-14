@@ -28,6 +28,10 @@ Sounds & Haptics / Ringtone and Alerts / Change with Buttons -> Off
 Privacy & Security -> Review 
 
   * Location Services
+    * Review apps and system services list
+    * System Services
+      * Significant Locations -> Off
+      * Status Bar Icon -> On
   * Tracking -> Off
 
   * Contacts
@@ -42,7 +46,8 @@ Privacy & Security -> Review
   * Analytics & Improvements -> Off
   * Apple Advertising -> Off
 
-  * App Privacy Report
+  * App Privacy Report -> On
+    * Review report content
 
   * Stolen Device Protection
 
@@ -66,3 +71,8 @@ Apps / Health
 
   * Medical ID -> Add Emergency Contacts
 
+
+Apps
+----
+
+Block / hide sensitive apps -> Long press app
