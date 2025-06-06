@@ -1,6 +1,25 @@
 # DNS
 
 
+## Testing
+
+  * https://dnsleaktest.com/
+  * https://on.quad9.net/
+
+
+
+## Quad9
+
+  * DNS-over-TLS (DoT)
+    * dns.quad9.net
+  * IPv4
+    * 9.9.9.9
+    * 149.112.112.112
+
+More info: https://www.quad9.net/service/service-addresses-and-features/
+
+
+
 ## Cloudflare
 
 one.one.one.one
