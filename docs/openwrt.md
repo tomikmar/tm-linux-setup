@@ -45,3 +45,13 @@
     uci commit
     /etc/init.d/network restart
 
+
+
+# Set custom DNS servers for DHCP
+
+    uci show dhcp.lan.dhcp_option
+    uci add_list dhcp.lan.dhcp_option="6,1.1.1.2,1.0.0.2"
+    uci commit dhcp
+    /etc/init.d/dnsmasq restart
+    uci show dhcp.lan.dhcp_option
+
