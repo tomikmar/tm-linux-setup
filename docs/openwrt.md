@@ -53,7 +53,7 @@ Tested on OpenWrt 24.10.
 
 
 
-# Set custom DNS servers for DHCP
+## Set custom DNS servers for DHCP
 
     uci show dhcp.lan.dhcp_option
     # 6 = DHCP option code for specifying DNS servers
@@ -64,7 +64,7 @@ Tested on OpenWrt 24.10.
 
 
 
-# Set custom DNS servers for router
+## Set custom DNS servers for router
     
     cat /etc/resolv.conf
     uci show dhcp.@dnsmasq[0].server
