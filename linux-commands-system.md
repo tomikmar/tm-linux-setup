@@ -1,5 +1,6 @@
 Ctrl+C, Ctrl+V
 --------------
+
     stty -a
     stty intr ^J
 
@@ -7,6 +8,7 @@ Ctrl+C, Ctrl+V
 
 Pictures - exiftool
 -------------------
+
     exiftool img1.jpg 
     exiftool -all= img1.jpg 
 
@@ -14,6 +16,7 @@ Pictures - exiftool
 
 Pictures - ImageMagick
 ----------------------
+
     convert -resize 25% img1.jpg img2.jpg
     identify -verbose m.jpg
 
@@ -21,6 +24,7 @@ Pictures - ImageMagick
 
 Video
 -----
+
     ffmpeg -i infile -vf "scale=iw/2:ih/2" outfile
     ffmpeg -i infile -vf "scale=iw/2:ih/2" -b:v 150k outfile
     ffmpeg -i infile -vf "scale=iw/4:ih/4" -b:v 140k -b:a 64k outfile
@@ -29,6 +33,7 @@ Video
 
 Memory
 ------
+
     free -g / free -m
     top -o %MEM
     top -> f -> up/down -> s -> q  (sort by something)
@@ -38,6 +43,7 @@ Memory
 
 X
 -
+
     xdg-open https://github.com
     xsel
 
@@ -45,12 +51,14 @@ X
 
 pdf
 ---
+
     pdfunite *.pdf 2018.pdf
 
 
 
 TTS - festival
 --------------
+
     apt install festival festvox-en1 festvox-us1 festvox-us2 festvox-us3 festvox-us-slt-hts festvox-kdlpc16k
     echo "Hello world" | festival --tts
     echo '(SayText "Hello World")' | festival --pipe
@@ -68,6 +76,7 @@ TTS - festival
 
 TTS - espeak-ng
 ---------------
+
     apt install espeak-ng
     espeak-ng --voices=en
     espeak-ng -s 150 -f text.txt
@@ -79,6 +88,7 @@ TTS - espeak-ng
 
 TTS - pico
 ----------
+
     apt install libttspico-utils
     pico2wave -w a.wav "Hello world" 
     aplay a.wav
@@ -89,6 +99,7 @@ TTS - pico
 
 Prepare flash drive
 -------------------
+
     lsblk -f
     dmesg
     hexdump -C /dev/MY-DISK
@@ -101,6 +112,7 @@ Prepare flash drive
 
 Apk certificate
 ---------------
+
     keytool -printcert -jarfile SOME-APP.apk
     java -jar apksigner.jar verify -verbose --print-certs SOME-APP.apk
 
@@ -108,6 +120,7 @@ Apk certificate
 
 Network info
 ------------
+
     nmcli device status
     nmcli device show <device>
 
