@@ -77,3 +77,18 @@ Tested on OpenWrt 24.10.
     /etc/init.d/network restart
     uci show network.wan
 
+
+
+## Disable Web Services for Devices (wsdd2)
+
+  * /etc/init.d/wsdd2 status
+  * /etc/init.d/wsdd2 stop
+  * /etc/init.d/wsdd2 disable
+  * /etc/init.d/wsdd2 status
+
+Ports used by wsdd2:
+
+  * TCP 5355, 3702
+  * UDP 5355, 3702
+
+
