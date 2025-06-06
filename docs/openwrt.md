@@ -17,13 +17,14 @@ Tested on OpenWrt 24.10.
 
 
 
-## Disable listening on port 80 (also IPv6)
+## Configure uhttpd to listen on LAN port 443 only (No IPv6)
 
     uci show uhttpd.main.listen_http
     uci show uhttpd.main.listen_https
     uci delete uhttpd.main.listen_http
     uci delete uhttpd.main.listen_https
-    uci add_list uhttpd.main.listen_https='0.0.0.0:443'
+    # Use only LAN interface instead of 0.0.0.0
+    uci add_list uhttpd.main.listen_https='192.168.xxx.xxx:443'
     # Disable http -> https redirection
     uci set uhttpd.main.redirect_https='0'
     uci commit uhttpd
@@ -81,10 +82,10 @@ Tested on OpenWrt 24.10.
 
 ## Disable Web Services for Devices (wsdd2)
 
-  * /etc/init.d/wsdd2 status
-  * /etc/init.d/wsdd2 stop
-  * /etc/init.d/wsdd2 disable
-  * /etc/init.d/wsdd2 status
+    /etc/init.d/wsdd2 status
+    /etc/init.d/wsdd2 stop
+    /etc/init.d/wsdd2 disable
+    /etc/init.d/wsdd2 status
 
 Ports used by wsdd2:
 
