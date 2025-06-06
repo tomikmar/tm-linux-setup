@@ -44,6 +44,9 @@ Tested on OpenWrt 24.10.
     uci set dhcp.lan.dhcpv6='disabled'
     uci set dhcp.lan.ra='disabled'
 
+    # This is also needed (see: ip -6 addr)
+    uci delete network.lan.ip6assign
+    
     # Disable odhcpd service
     /etc/init.d/odhcpd status    
     /etc/init.d/odhcpd disable
