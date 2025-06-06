@@ -97,3 +97,10 @@ Prepare flash drive
 	ntfs,exfat -> 7 HPFS/NTFS/exFAT
     mkfs.exfat /dev/MY-DISK-PARTITION
 
+
+
+Apk certificate
+-----------------------
+    keytool -printcert -jarfile SOME-APP.apk
+    java -jar apksigner.jar verify -verbose --print-certs SOME-APP.apk
+
