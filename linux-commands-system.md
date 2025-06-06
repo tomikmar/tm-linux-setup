@@ -100,7 +100,14 @@ Prepare flash drive
 
 
 Apk certificate
------------------------
+---------------
     keytool -printcert -jarfile SOME-APP.apk
     java -jar apksigner.jar verify -verbose --print-certs SOME-APP.apk
+
+
+
+Network info
+------------
+    nmcli device status
+    nmcli device show <device>
 
