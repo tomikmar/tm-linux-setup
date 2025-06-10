@@ -97,7 +97,7 @@ Ports used by wsdd2:
 
 
 
-# Limit dnsmask interfaces
+## Limit dnsmask interfaces
 
     # Clear previous settings
     uci show dhcp.@dnsmasq[0].interface
@@ -119,10 +119,18 @@ Ports used by wsdd2:
 
 
 
-# Disable ksmbd
+## Disable ksmbd
 
-   /etc/init.d/ksmbd status
-   /etc/init.d/ksmbd stop
-   /etc/init.d/ksmbd disable
-   /etc/init.d/ksmbd status
+    /etc/init.d/ksmbd status
+    /etc/init.d/ksmbd stop
+    /etc/init.d/ksmbd disable
+    /etc/init.d/ksmbd status
+
+
+
+## Tests
+
+    nslookup dns.quad9.net
+    ping -c3 dns.quad9.net
+    netstat -antup
 
