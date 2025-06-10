@@ -117,3 +117,12 @@ Ports used by wsdd2:
     /etc/init.d/dnsmasq restart
     ping -c3 dns.quad9.net
 
+
+
+# Disable ksmbd
+
+   /etc/init.d/ksmbd status
+   /etc/init.d/ksmbd stop
+   /etc/init.d/ksmbd disable
+   /etc/init.d/ksmbd status
+
