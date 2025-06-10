@@ -39,14 +39,23 @@ Tested on OpenWrt 24.10.
     # Disable IPv6 on LAN and WAN
     uci set network.lan.ipv6='0'
     uci set network.wan.ipv6='0'
+    # (?)
+    uci set network.lan.delegate="0"
 
     # Disable DHCPv6 and RA on LAN
     uci set dhcp.lan.dhcpv6='disabled'
     uci set dhcp.lan.ra='disabled'
+    # Neighbor Discovery Protocol (?)
+    uci set dhcp.lan.ndp='disabled'
 
     # This is also needed (see: ip -6 addr)
     uci delete network.lan.ip6assign
-    
+
+    # Disable IPv6 in kernel
+    echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf
+    echo "net.ipv6.conf.default.disable_ipv6=1" >> /etc/sysctl.conf
+    sysctl -p 
+ 
     # Disable odhcpd service
     /etc/init.d/odhcpd status    
     /etc/init.d/odhcpd disable
