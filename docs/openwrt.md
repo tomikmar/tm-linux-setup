@@ -6,7 +6,14 @@ Tested on OpenWrt 24.10.
 
 ## System
 
+  * Administration / SSH-Keys
   * Administration / SSH Access
+
+    uci show dropbear.@dropbear[0].PasswordAuth
+    uci show dropbear.@dropbear[0].RootPasswordAuth
+    uci set dropbear.@dropbear[0].PasswordAuth='off'
+    uci set dropbear.@dropbear[0].RootPasswordAuth='off'
+    uci commit dropbear
 
 
 
