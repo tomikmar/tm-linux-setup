@@ -9,6 +9,7 @@ Tested on OpenWrt 24.10.
   * Administration / SSH-Keys
   * Administration / SSH Access
 
+
     uci show dropbear.@dropbear[0].PasswordAuth
     uci show dropbear.@dropbear[0].RootPasswordAuth
     uci set dropbear.@dropbear[0].PasswordAuth='off'
@@ -21,6 +22,12 @@ Tested on OpenWrt 24.10.
 
   * Dynamic DNS -> Disable
   * Wifi Schedule
+
+
+
+## Network
+
+  * DHCP and DNS / Static leases
 
 
 
