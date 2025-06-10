@@ -8,13 +8,13 @@ Tested on OpenWrt 24.10.
 
   * Administration / SSH-Keys
   * Administration / SSH Access
-
-
+    ```bash
     uci show dropbear.@dropbear[0].PasswordAuth
     uci show dropbear.@dropbear[0].RootPasswordAuth
     uci set dropbear.@dropbear[0].PasswordAuth='off'
     uci set dropbear.@dropbear[0].RootPasswordAuth='off'
     uci commit dropbear
+    ```
 
 
 
