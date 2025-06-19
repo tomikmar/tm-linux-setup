@@ -53,6 +53,7 @@ pdf
 ---
 
     pdfunite *.pdf 2018.pdf
+    qpdf input.pdf --pages . 1-13 -- output.pdf
 
 
 
