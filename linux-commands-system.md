@@ -49,11 +49,23 @@ X
 
 
 
-pdf
----
+pdf - merge and split
+---------------------
 
     pdfunite *.pdf 2018.pdf
     qpdf input.pdf --pages . 1-13 -- output.pdf
+
+
+
+pdf - decrypt and save attachments
+----------------------------------
+
+    read -s -p "Password: " PASS
+    pdfinfo -upw $PASS TwojeDokumenty.pdf
+    qpdf --show-encryption --password="$PASS" TwojeDokumenty.pdf
+    qpdf --decrypt --password="$PASS" TwojeDokumenty.pdf TwojeDokumenty-decrypted.pdf
+    pdfdetach -list TwojeDokumenty-decrypted.pdf
+    pdfdetach -saveall TwojeDokumenty-decrypted.pdf
 
 
 
