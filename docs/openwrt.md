@@ -152,6 +152,79 @@ Ports used by wsdd2:
 
 
 
+## Add separated guest wifi
+
+    # Add interface
+    uci delete network.guest
+    uci set network.guest=interface
+    uci set network.guest.proto='static'
+    uci set network.guest.ipaddr='192.168.103.1'
+    uci set network.guest.netmask='255.255.255.0'
+
+    # Configure DHCP
+    uci delete dhcp.guest
+    uci set dhcp.guest=dhcp
+    uci set dhcp.guest.interface='guest'
+    uci set dhcp.guest.start='100'
+    uci set dhcp.guest.limit='30'
+    uci set dhcp.guest.leasetime='4h'
+    uci add_list dhcp.@dnsmasq[0].interface='guest'
+    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.103.1'
+
+    # Add wifi interface
+    uci delete wireless.guest_wifi
+    uci set wireless.guest_wifi=wifi-iface
+    uci set wireless.guest_wifi.device='radio1'
+    uci set wireless.guest_wifi.network='guest'
+    uci set wireless.guest_wifi.mode='ap'
+    # ! UPDATE !
+    uci set wireless.guest_wifi.ssid='guest-wifi'
+    uci set wireless.guest_wifi.encryption='psk2'
+    # ! UPDATE !
+    uci set wireless.guest_wifi.key='****************'
+    uci set wireless.guest_wifi.isolate='1'
+
+    # Set firewall
+    uci delete firewall.guest_zone
+    uci set firewall.guest_zone='zone'
+    uci set firewall.guest_zone.name='guest'
+    uci set firewall.guest_zone.network='guest'
+    uci set firewall.guest_zone.input='REJECT'
+    uci set firewall.guest_zone.output='ACCEPT'
+    uci set firewall.guest_zone.forward='REJECT'
+
+    uci delete firewall.guest_to_wan
+    uci set firewall.guest_to_wan='forwarding'
+    uci set firewall.guest_to_wan.src='guest'
+    uci set firewall.guest_to_wan.dest='wan'
+
+    uci delete firewall.guest_dhcp_rule
+    uci set firewall.guest_dhcp_rule='rule'
+    uci set firewall.guest_dhcp_rule.name='Guest-DHCP'
+    uci set firewall.guest_dhcp_rule.src='guest'
+    uci set firewall.guest_dhcp_rule.proto='udp'
+    uci set firewall.guest_dhcp_rule.dest_port='67-68'
+    uci set firewall.guest_dhcp_rule.target='ACCEPT'
+
+    uci delete firewall.guest_dns_rule
+    uci set firewall.guest_dns_rule='rule'
+    uci set firewall.guest_dns_rule.name='Guest-DNS'
+    uci set firewall.guest_dns_rule.src='guest'
+    uci set firewall.guest_dns_rule.proto=''
+    uci add_list firewall.guest_dns_rule.proto='udp'
+    uci add_list firewall.guest_dns_rule.proto='tcp'
+    uci set firewall.guest_dns_rule.dest_port='53'
+    uci set firewall.guest_dns_rule.target='ACCEPT'
+
+    # Restart services
+    uci commit
+    wifi reload
+    /etc/init.d/network restart
+    /etc/init.d/firewall restart
+    /etc/init.d/dnsmasq restart
+
+
+
 ## Tests
 
     nslookup dns.quad9.net
