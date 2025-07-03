@@ -158,3 +158,11 @@ Ports used by wsdd2:
     ping -c3 dns.quad9.net
     netstat -antup
 
+
+
+## Revovery
+
+    ip link show
+    ip addr add 192.168.100.111/24 dev <INTERFACE>
+    ping 192.168.100.1
+
