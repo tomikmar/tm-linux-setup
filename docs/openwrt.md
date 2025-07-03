@@ -155,27 +155,27 @@ Ports used by wsdd2:
 ## Add separated guest wifi
 
     # Add interface
-    uci delete network.guest
-    uci set network.guest=interface
-    uci set network.guest.proto='static'
-    uci set network.guest.ipaddr='192.168.103.1'
-    uci set network.guest.netmask='255.255.255.0'
+    uci delete network.guest_net
+    uci set network.guest_net=interface
+    uci set network.guest_net.proto='static'
+    uci set network.guest_net.ipaddr='192.168.103.1'
+    uci set network.guest_net.netmask='255.255.255.0'
 
     # Configure DHCP
-    uci delete dhcp.guest
-    uci set dhcp.guest=dhcp
-    uci set dhcp.guest.interface='guest'
-    uci set dhcp.guest.start='100'
-    uci set dhcp.guest.limit='30'
-    uci set dhcp.guest.leasetime='4h'
-    uci add_list dhcp.@dnsmasq[0].interface='guest'
+    uci delete dhcp.guest_dhcp
+    uci set dhcp.guest_dhcp=dhcp
+    uci set dhcp.guest_dhcp.interface='guest_net'
+    uci set dhcp.guest_dhcp.start='100'
+    uci set dhcp.guest_dhcp.limit='30'
+    uci set dhcp.guest_dhcp.leasetime='4h'
+    uci add_list dhcp.@dnsmasq[0].interface='guest_net'
     uci add_list dhcp.@dnsmasq[0].listen_address='192.168.103.1'
 
     # Add wifi interface
     uci delete wireless.guest_wifi
     uci set wireless.guest_wifi=wifi-iface
     uci set wireless.guest_wifi.device='radio1'
-    uci set wireless.guest_wifi.network='guest'
+    uci set wireless.guest_wifi.network='guest_net'
     uci set wireless.guest_wifi.mode='ap'
     # ! UPDATE !
     uci set wireless.guest_wifi.ssid='guest-wifi'
@@ -187,21 +187,21 @@ Ports used by wsdd2:
     # Set firewall
     uci delete firewall.guest_zone
     uci set firewall.guest_zone='zone'
-    uci set firewall.guest_zone.name='guest'
-    uci set firewall.guest_zone.network='guest'
+    uci set firewall.guest_zone.name='guest_zone'
+    uci set firewall.guest_zone.network='guest_net'
     uci set firewall.guest_zone.input='REJECT'
     uci set firewall.guest_zone.output='ACCEPT'
     uci set firewall.guest_zone.forward='REJECT'
 
     uci delete firewall.guest_to_wan
     uci set firewall.guest_to_wan='forwarding'
-    uci set firewall.guest_to_wan.src='guest'
+    uci set firewall.guest_to_wan.src='guest_zone'
     uci set firewall.guest_to_wan.dest='wan'
 
     uci delete firewall.guest_dhcp_rule
     uci set firewall.guest_dhcp_rule='rule'
     uci set firewall.guest_dhcp_rule.name='Guest-DHCP'
-    uci set firewall.guest_dhcp_rule.src='guest'
+    uci set firewall.guest_dhcp_rule.src='guest_zone'
     uci set firewall.guest_dhcp_rule.proto='udp'
     uci set firewall.guest_dhcp_rule.dest_port='67-68'
     uci set firewall.guest_dhcp_rule.target='ACCEPT'
@@ -209,7 +209,7 @@ Ports used by wsdd2:
     uci delete firewall.guest_dns_rule
     uci set firewall.guest_dns_rule='rule'
     uci set firewall.guest_dns_rule.name='Guest-DNS'
-    uci set firewall.guest_dns_rule.src='guest'
+    uci set firewall.guest_dns_rule.src='guest_zone'
     uci set firewall.guest_dns_rule.proto=''
     uci add_list firewall.guest_dns_rule.proto='udp'
     uci add_list firewall.guest_dns_rule.proto='tcp'
