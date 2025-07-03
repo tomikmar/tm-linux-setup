@@ -160,9 +160,11 @@ Ports used by wsdd2:
 
 
 
-## Revovery
+## Recovery
 
     ip link show
     ip addr add 192.168.100.111/24 dev <INTERFACE>
     ping 192.168.100.1
+    # Remove static IP after switching back to a wifi connection
+    ip addr del 192.168.100.111/24 dev <INTERFACE>
 
