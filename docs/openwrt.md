@@ -38,7 +38,7 @@ Tested on OpenWrt 24.10.
     uci delete uhttpd.main.listen_http
     uci delete uhttpd.main.listen_https
     # Use only LAN interface instead of 0.0.0.0
-    uci add_list uhttpd.main.listen_https='192.168.xxx.1:443'
+    uci add_list uhttpd.main.listen_https='192.168.100.1:443'
     # Disable http -> https redirection
     uci set uhttpd.main.redirect_https='0'
     uci commit uhttpd
@@ -132,12 +132,13 @@ Ports used by wsdd2:
     # Configure dnsmasq to listen on specific interfaces and IP
     uci add_list dhcp.@dnsmasq[0].interface='br-lan'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan'
-    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.xxx.1'
+    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.100.1'
     uci set dhcp.@dnsmasq[0].bind_interfaces='1'
     uci set dhcp.@dnsmasq[0].localservice='1'
     uci set dhcp.@dnsmasq[0].noresolv='0'
     uci commit dhcp
     /etc/init.d/dnsmasq restart
+    /etc/init.d/dnsmasq status
     ping -c3 dns.quad9.net
 
 
