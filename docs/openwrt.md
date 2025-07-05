@@ -256,3 +256,9 @@ Ports used by wsdd2:
     # Remove static IP after switching back to a wifi connection
     ip addr del 192.168.100.111/24 dev <INTERFACE>
 
+    ip addr show
+    brctl show
+    ip route
+
+    iw phy
+
