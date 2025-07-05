@@ -182,7 +182,10 @@ Ports used by wsdd2:
     uci set wireless.guest_wifi.encryption='psk2'
     # ! UPDATE !
     uci set wireless.guest_wifi.key='****************'
+    # Block communication between clients on wireless interface level
     uci set wireless.guest_wifi.isolate='1'
+    # Disable Wi-Fi Protected Setup (WPS)
+    uci set wireless.guest_wifi.wps='0'
 
     # Set firewall
     uci delete firewall.guest_zone
@@ -198,30 +201,42 @@ Ports used by wsdd2:
     uci set firewall.guest_to_wan.src='guest_zone'
     uci set firewall.guest_to_wan.dest='wan'
 
+    # Allow DHCP
     uci delete firewall.guest_dhcp_rule
     uci set firewall.guest_dhcp_rule='rule'
     uci set firewall.guest_dhcp_rule.name='Guest-DHCP'
     uci set firewall.guest_dhcp_rule.src='guest_zone'
     uci set firewall.guest_dhcp_rule.proto='udp'
     uci set firewall.guest_dhcp_rule.dest_port='67-68'
+    uci set firewall.guest_dhcp_rule.limit='50/sec'
+    uci set firewall.guest_dhcp_rule.limit_burst='100'
     uci set firewall.guest_dhcp_rule.target='ACCEPT'
 
+    # Allow DNS
     uci delete firewall.guest_dns_rule
     uci set firewall.guest_dns_rule='rule'
     uci set firewall.guest_dns_rule.name='Guest-DNS'
     uci set firewall.guest_dns_rule.src='guest_zone'
-    uci set firewall.guest_dns_rule.proto=''
     uci add_list firewall.guest_dns_rule.proto='udp'
     uci add_list firewall.guest_dns_rule.proto='tcp'
     uci set firewall.guest_dns_rule.dest_port='53'
+    uci set firewall.guest_dns_rule.limit='50/sec'
     uci set firewall.guest_dns_rule.target='ACCEPT'
+
+    # Block communication between clients on firewall level
+    uci delete firewall.guest_no_interclient
+    uci set firewall.guest_no_interclient='rule'
+    uci set firewall.guest_no_interclient.name='Guest-No-Interclient'
+    uci set firewall.guest_no_interclient.src='guest_zone'
+    uci set firewall.guest_no_interclient.dest='guest_zone'
+    uci set firewall.guest_no_interclient.target='DROP'
 
     # Restart services
     uci commit
     wifi reload
-    /etc/init.d/network restart
-    /etc/init.d/firewall restart
     /etc/init.d/dnsmasq restart
+    /etc/init.d/firewall restart
+    /etc/init.d/network restart
 
 
 
