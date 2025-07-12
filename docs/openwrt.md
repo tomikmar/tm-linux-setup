@@ -262,3 +262,7 @@ Ports used by wsdd2:
 
     iw phy
 
+    iw dev
+    iw dev phy1-ap0 station dump
+    iw dev wlan0 station del XX:XX:XX:XX:XX:XX
+
