@@ -137,3 +137,11 @@ Network info
     nmcli device status
     nmcli device show <device>
 
+
+
+GPG
+---
+
+    gpg --list-keys --with-subkey-fingerprints --with-keygrip
+    gpg --list-secret-keys --with-subkey-fingerprints --with-keygrip
+
