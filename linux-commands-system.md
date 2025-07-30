@@ -144,4 +144,6 @@ GPG
 
     gpg --list-keys --with-subkey-fingerprints --with-keygrip
     gpg --list-secret-keys --with-subkey-fingerprints --with-keygrip
+    gpg --keyserver hkp://keyserver.ubuntu.com --search-key cdimage@ubuntu.com
+    gpg --sign-key <keyId>
 
