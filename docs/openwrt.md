@@ -232,7 +232,89 @@ Ports used by wsdd2:
     uci set firewall.guest_no_interclient.dest='guest_zone'
     uci set firewall.guest_no_interclient.target='DROP'
 
-    # Restart services
+    # Commit and restart services
+    uci commit
+    wifi reload
+    /etc/init.d/dnsmasq restart
+    /etc/init.d/firewall restart
+    /etc/init.d/network restart
+
+
+
+## Add separated iot wifi
+
+    # Add interface
+    uci delete network.iot_net
+    uci set network.iot_net=interface
+    uci set network.iot_net.proto='static'
+    uci set network.iot_net.ipaddr='192.168.105.1'
+    uci set network.iot_net.netmask='255.255.255.0'
+
+    # Configure DHCP
+    uci delete dhcp.iot_dhcp
+    uci set dhcp.iot_dhcp=dhcp
+    uci set dhcp.iot_dhcp.interface='iot_net'
+    uci set dhcp.iot_dhcp.start='100'
+    uci set dhcp.iot_dhcp.limit='30'
+    uci set dhcp.iot_dhcp.leasetime='24h'
+    uci add_list dhcp.@dnsmasq[0].interface='iot_net'
+    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.105.1'
+
+    # Add wifi interface
+    uci delete wireless.iot_wifi
+    uci set wireless.iot_wifi=wifi-iface
+    uci set wireless.iot_wifi.device='radio1'
+    uci set wireless.iot_wifi.network='iot_net'
+    uci set wireless.iot_wifi.mode='ap'
+    # ! UPDATE !
+    uci set wireless.iot_wifi.ssid='iot-wifi'
+    uci set wireless.iot_wifi.encryption='sae-mixed'
+    # ! UPDATE !
+    uci set wireless.iot_wifi.key='****************'
+    # Disable client isolation on wireless interface
+    uci set wireless.iot_wifi.isolate='0'
+    # Disable Wi-Fi Protected Setup (WPS)
+    uci set wireless.iot_wifi.wps='0'
+    # Hide network
+    uci set wireless.iot_wifi.hidden='1'
+
+    # Set firewall
+    uci delete firewall.iot_zone
+    uci set firewall.iot_zone='zone'
+    uci set firewall.iot_zone.name='iot_zone'
+    uci set firewall.iot_zone.network='iot_net'
+    uci set firewall.iot_zone.input='REJECT'
+    uci set firewall.iot_zone.output='ACCEPT'
+    uci set firewall.iot_zone.forward='REJECT'
+
+    uci delete firewall.iot_to_wan
+    uci set firewall.iot_to_wan='forwarding'
+    uci set firewall.iot_to_wan.src='iot_zone'
+    uci set firewall.iot_to_wan.dest='wan'
+
+    # Allow DHCP
+    uci delete firewall.iot_dhcp_rule
+    uci set firewall.iot_dhcp_rule='rule'
+    uci set firewall.iot_dhcp_rule.name='Iot-DHCP'
+    uci set firewall.iot_dhcp_rule.src='iot_zone'
+    uci set firewall.iot_dhcp_rule.proto='udp'
+    uci set firewall.iot_dhcp_rule.dest_port='67-68'
+    uci set firewall.iot_dhcp_rule.limit='50/sec'
+    uci set firewall.iot_dhcp_rule.limit_burst='100'
+    uci set firewall.iot_dhcp_rule.target='ACCEPT'
+
+    # Allow DNS
+    uci delete firewall.iot_dns_rule
+    uci set firewall.iot_dns_rule='rule'
+    uci set firewall.iot_dns_rule.name='Iot-DNS'
+    uci set firewall.iot_dns_rule.src='iot_zone'
+    uci add_list firewall.iot_dns_rule.proto='udp'
+    uci add_list firewall.iot_dns_rule.proto='tcp'
+    uci set firewall.iot_dns_rule.dest_port='53'
+    uci set firewall.iot_dns_rule.limit='50/sec'
+    uci set firewall.iot_dns_rule.target='ACCEPT'
+
+    # Commit and restart services
     uci commit
     wifi reload
     /etc/init.d/dnsmasq restart
