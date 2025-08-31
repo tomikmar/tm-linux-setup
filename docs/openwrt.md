@@ -27,6 +27,7 @@ Tested on OpenWrt 24.10.
 
 ## Network
 
+  * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
   * DHCP and DNS / Static leases
 
 
@@ -179,7 +180,7 @@ Ports used by wsdd2:
     uci set wireless.guest_wifi.mode='ap'
     # ! UPDATE !
     uci set wireless.guest_wifi.ssid='guest-wifi'
-    uci set wireless.guest_wifi.encryption='psk2'
+    uci set wireless.guest_wifi.encryption='sae-mixed'
     # ! UPDATE !
     uci set wireless.guest_wifi.key='****************'
     # Block communication between clients on wireless interface level
