@@ -232,7 +232,7 @@ Ports used by wsdd2:
     uci set firewall.guest_no_interclient.dest='guest_zone'
     uci set firewall.guest_no_interclient.target='DROP'
 
-    # Commit and restart services
+    # Commit changes and restart services
     uci commit
     wifi reload
     /etc/init.d/dnsmasq restart
@@ -314,7 +314,14 @@ Ports used by wsdd2:
     uci set firewall.iot_dns_rule.limit='50/sec'
     uci set firewall.iot_dns_rule.target='ACCEPT'
 
-    # Commit and restart services
+    # Static IP for IoT device in DHCP
+    uci set dhcp.iot_air_quality=host
+    uci set dhcp.iot_air_quality.name='AirQualityMeter'
+    uci set dhcp.iot_air_quality.mac='xx:xx:xx:xx:xx:xx'
+    uci set dhcp.iot_air_quality.ip='192.168.105.2'
+    uci commit dhcp
+
+    # Commit changes and restart services
     uci commit
     wifi reload
     /etc/init.d/dnsmasq restart
