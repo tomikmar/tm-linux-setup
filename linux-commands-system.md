@@ -9,8 +9,20 @@ Ctrl+C, Ctrl+V
 Pictures - exiftool
 -------------------
 
+    # Show metadata
     exiftool img1.jpg 
+ 
+    # Remove metadata
     exiftool -all= img1.jpg 
+    
+    # Add "PreservedFileName" tag with original file name if tag doesn't exist
+    #   - preserve modification date
+    exiftool -fileOrder DateTimeOriginal -if 'not $XMP-xmpMM:PreservedFileName' '-XMP-xmpMM:PreservedFileName<$FileName' -overwrite_original -preserve -extension jpg *.jpg
+
+    # Batch rename by capture date
+    #   - add additional number (e.g. -001) if file with new name already exists
+    #   - write extension in lowercase
+    exiftool -fileOrder DateTimeOriginal '-FileName<DateTimeOriginal' -d '%Y-%m-%d_%H%M%S%%-3c.%%le' -extension jpg *.jpg
 
 
 
