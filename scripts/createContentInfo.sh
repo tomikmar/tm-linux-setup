@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -euo pipefail
+
+
 CREATION_TIME=`date +"%Y-%m-%d-%H%M"`
 CONTENT_FILE=content.${CREATION_TIME}.md5
 
@@ -12,8 +15,9 @@ echo "# Space used (h) : " `(du -sh)`                 | tee -a ./${CONTENT_FILE}
 echo "# Space used (b) : " `(du -s)`                  | tee -a ./${CONTENT_FILE}
 echo "# Command        : " \
    "find . -type f ! -name content\*.md5 -print0 | sort -z | xargs -0 md5sum -b" | tee -a ./${CONTENT_FILE}
-echo "# Script version : 1.0.1 (2020.06.01) "         | tee -a ./${CONTENT_FILE}
+echo "# Script version :  1.0.2 (2025.09.18) "        | tee -a ./${CONTENT_FILE}
 echo "#"                                              | tee -a ./${CONTENT_FILE}
 
 find . -type f ! -name content\*.md5 -print0 | sort -z | xargs -0 md5sum -b | tee -a ./${CONTENT_FILE}
+# The pipeline above may complete even if errors occur (e.g. no access permissions) - check the status code $?
 
