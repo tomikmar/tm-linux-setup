@@ -1,26 +1,32 @@
+### Install
+
+    # Tools
+    sudo apt install vim colordiff mc pv jq httpie whois hexdiff xclip 
+    # Compression
+    sudo apt install p7zip-full pigz
+    # Hex editor
+    sudo apt install wxhexeditor
+    # Amator radio soft
+    sudo apt install viking gpxviewer gpredict
+    # File explorer
+    sudo apt install xfe
+    # Converters
+    sudo apt install dos2unix
+    # Network tools
+    sudo apt install net-tools hping3 nmap
+    # Password manager
+    sudo apt install keepassxc
+    # Pictures
+    apt install exiftool
+    # Dev tools
+    sudo apt install git gitk openjdk-??-jdk
+
+
+
 ### Select vim as default editor
-sudo update-alternatives --config editor
 
+    sudo update-alternatives --config editor
 
-### Install soft by apt
-# Tools
-apt install colordiff mc pv jq httpie whois hexdiff xclip p7zip-full
-# Hex editor
-apt install wxhexeditor
-# Amator radio soft
-apt install viking gpxviewer gpredict gqrx-sdr
-# File explorer
-apt install xfe
-# Converters
-apt install dos2unix
-# Network tools
-apt install net-tools hping3 nmap
-# Password manager
-apt install keepassxc
-# Java
-apt install openjdk-17-jdk
-# Pictures
-apt install exiftool
 
 
 ### Correct strange sort order for underscore
@@ -31,6 +37,7 @@ locale-gen
 More info:
     http://svmiller.com/blog/2019/07/notes-to-self-new-linux-installation-r-ubuntu/
     https://unix.stackexchange.com/a/361021/456093
+
 
 
 ### Correct locale
@@ -70,12 +77,21 @@ LC_ALL=
 
 
 ### Install additional soft
-* IntelliJ
-* Beyond Compare
-* Visual Studio Code
+
+  * IntelliJ
+  * Beyond Compare
+  * Visual Studio Code
+
 
 
 ### Uninstall
-* apt list --installed | grep thunderbird
-* apt-get purge thunderbird*
+
+  * apt list --installed | grep thunderbird
+  * apt-get purge thunderbird*
+
+
+
+### Issues
+
+  * gqrx-sdr
 
