@@ -159,3 +159,10 @@ GPG
     gpg --keyserver hkp://keyserver.ubuntu.com --search-key cdimage@ubuntu.com
     gpg --sign-key <keyId>
 
+
+
+Splitting files
+---------------
+
+    split -b 8G --numeric-suffixes=1 name.bin name.bin_
+
