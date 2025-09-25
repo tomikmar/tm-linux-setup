@@ -18,6 +18,14 @@ Tested on OpenWrt 24.10.
 
 
 
+# Install
+
+    opkg update
+    # Network monitoring
+    opkg install ifstat iftop nload bmon
+
+
+
 ## Services
 
   * Dynamic DNS -> Disable
