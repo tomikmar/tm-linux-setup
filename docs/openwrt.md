@@ -11,9 +11,15 @@ Tested on OpenWrt 24.10.
     ```bash
     uci show dropbear.@dropbear[0].PasswordAuth
     uci show dropbear.@dropbear[0].RootPasswordAuth
+    uci show dropbear.@dropbear[0].Interface
+    uci show dropbear.@dropbear[0].Port
     uci set dropbear.@dropbear[0].PasswordAuth='off'
     uci set dropbear.@dropbear[0].RootPasswordAuth='off'
+    uci set dropbear.@dropbear[0].Interface='lan'
+    uci set dropbear.@dropbear[0].Port='<SSH-PORT>'
     uci commit dropbear
+    /etc/init.d/dropbear restart
+    netstat -antup | grep dropbear
     ```
 
 
