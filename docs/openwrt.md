@@ -35,6 +35,24 @@ Tested on OpenWrt 24.10.
 
 
 
+## Configure uhttpd to listen on LAN port 443 only (No IPv6)
+
+    uci show uhttpd.main.listen_http
+    uci show uhttpd.main.listen_https
+    uci delete uhttpd.main.listen_http
+    uci delete uhttpd.main.listen_https
+    # Use only LAN interface instead of 0.0.0.0
+    uci add_list uhttpd.main.listen_https='192.168.101.1:443'
+    # Disable http -> https redirection
+    uci set uhttpd.main.redirect_https='0'
+    uci commit uhttpd
+    /etc/init.d/uhttpd restart
+    uci show uhttpd.main.listen_http
+    uci show uhttpd.main.listen_https
+    netstat -antup | grep uhttpd
+
+
+
 ## Install
 
     opkg update
@@ -57,20 +75,6 @@ Tested on OpenWrt 24.10.
 
 
 
-## Configure uhttpd to listen on LAN port 443 only (No IPv6)
-
-    uci show uhttpd.main.listen_http
-    uci show uhttpd.main.listen_https
-    uci delete uhttpd.main.listen_http
-    uci delete uhttpd.main.listen_https
-    # Use only LAN interface instead of 0.0.0.0
-    uci add_list uhttpd.main.listen_https='192.168.100.1:443'
-    # Disable http -> https redirection
-    uci set uhttpd.main.redirect_https='0'
-    uci commit uhttpd
-    /etc/init.d/uhttpd restart
-    uci show uhttpd.main.listen_http
-    uci show uhttpd.main.listen_https
 
 
 
