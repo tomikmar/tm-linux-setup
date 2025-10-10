@@ -4,10 +4,10 @@ Tested on OpenWrt 24.10.
 
 
 
-## System
+## System / Administration
 
-  * Administration / SSH-Keys
-  * Administration / SSH Access
+  * SSH-Keys
+  * SSH Access
     ```bash
     uci show dropbear.@dropbear[0].PasswordAuth
     uci show dropbear.@dropbear[0].RootPasswordAuth
@@ -24,7 +24,18 @@ Tested on OpenWrt 24.10.
 
 
 
-# Install
+## Network
+
+  * Interfaces
+    ```bash
+    uci show network.lan.ipaddr
+    uci set network.lan.ipaddr='192.168.101.1'
+    uci commit network
+    ```
+
+
+
+## Install
 
     opkg update
     # Network monitoring
