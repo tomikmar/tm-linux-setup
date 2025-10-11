@@ -31,7 +31,7 @@ Tested on OpenWrt 24.10.
     uci get system.@system[0].hostname
     cat /proc/sys/kernel/hostname
     #
-    uci set system.@system[0].hostname='NewName'
+    uci set system.@system[0].hostname='<NEW_NAME>'
     #
     uci commit system
     /etc/init.d/system reload
@@ -53,7 +53,7 @@ Tested on OpenWrt 24.10.
     uci set dropbear.@dropbear[0].PasswordAuth='off'
     uci set dropbear.@dropbear[0].RootPasswordAuth='off'
     uci set dropbear.@dropbear[0].Interface='lan'
-    uci set dropbear.@dropbear[0].Port='<SSH-PORT>'
+    uci set dropbear.@dropbear[0].Port='<SSH_PORT>'
     #
     uci commit dropbear
     /etc/init.d/dropbear restart
@@ -103,6 +103,12 @@ Tested on OpenWrt 24.10.
     /etc/init.d/dnsmasq restart
     /etc/init.d/dnsmasq status
     netstat -antup | grep dnsmasq
+
+    # As dnsmasq no longer listens on localhost, the /etc/resolv.conf file must be
+    # adjusted to allow the router to resolve DNS queries through dnsmasq locally.
+    search lan
+    nameserver 192.168.101.1
+    
     ping -c3 dns.quad9.net
 
 
