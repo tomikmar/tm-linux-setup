@@ -66,12 +66,14 @@ Tested on OpenWrt 24.10.
 
     uci show uhttpd.main.listen_http
     uci show uhttpd.main.listen_https
+    #
     uci delete uhttpd.main.listen_http
     uci delete uhttpd.main.listen_https
     # Use only LAN interface instead of 0.0.0.0
     uci add_list uhttpd.main.listen_https='192.168.101.1:443'
     # Disable http -> https redirection
     uci set uhttpd.main.redirect_https='0'
+    #
     uci commit uhttpd
     /etc/init.d/uhttpd restart
     uci show uhttpd.main.listen_http
@@ -86,6 +88,7 @@ Tested on OpenWrt 24.10.
     uci show dhcp.@dnsmasq[0].interface
     uci show dhcp.@dnsmasq[0].notinterface
     uci show dhcp.@dnsmasq[0].listen_address
+    #
     uci delete dhcp.@dnsmasq[0].interface
     uci delete dhcp.@dnsmasq[0].notinterface
     uci delete dhcp.@dnsmasq[0].listen_address
@@ -99,6 +102,7 @@ Tested on OpenWrt 24.10.
     uci set dhcp.@dnsmasq[0].bind_interfaces='1'
     uci set dhcp.@dnsmasq[0].localservice='1'
     uci set dhcp.@dnsmasq[0].noresolv='0'
+    #
     uci commit dhcp
     /etc/init.d/dnsmasq restart
     /etc/init.d/dnsmasq status
@@ -145,8 +149,10 @@ Ports used by wsdd2:
 #### Set custom DNS servers for DHCP
 
     uci show dhcp.lan.dhcp_option
+    #
     # 6 = DHCP option code for specifying DNS servers
     uci add_list dhcp.lan.dhcp_option="6,1.1.1.2,1.0.0.2"
+    #
     uci commit dhcp
     /etc/init.d/dnsmasq restart
     uci show dhcp.lan.dhcp_option
@@ -161,6 +167,7 @@ Ports used by wsdd2:
     #
     uci set network.wan.dns='1.1.1.3 1.0.0.3'
     uci set network.wan.peerdns='0'
+    #
     uci commit network
     /etc/init.d/network restart
     uci show network.wan
@@ -224,6 +231,7 @@ Ports used by wsdd2:
 
 ## Network
 
+  * Configure and enable WiFi
   * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
 
 
