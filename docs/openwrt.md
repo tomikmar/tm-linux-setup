@@ -106,6 +106,37 @@ Ports used by wsdd2:
     /etc/init.d/ksmbd disable
     /etc/init.d/ksmbd status
 
+#### Services / Dynamic DNS
+
+  * Disable
+
+
+
+## Set custom DNS
+
+  * Set custom DNS servers for DHCP
+
+    uci show dhcp.lan.dhcp_option
+    # 6 = DHCP option code for specifying DNS servers
+    uci add_list dhcp.lan.dhcp_option="6,1.1.1.2,1.0.0.2"
+    uci commit dhcp
+    /etc/init.d/dnsmasq restart
+    uci show dhcp.lan.dhcp_option
+
+  *  Set custom DNS servers for router
+    
+    cat /etc/resolv.conf
+    cat /tmp/resolv.conf.d/resolv.conf.auto
+    uci show dhcp.@dnsmasq[0].server
+    uci show network.wan.dns
+    uci show network.wan.peerdns
+    #
+    uci set network.wan.dns='1.1.1.3 1.0.0.3'
+    uci set network.wan.peerdns='0'
+    uci commit network
+    /etc/init.d/network restart
+    uci show network.wan
+
 
 
 ## Install
@@ -118,7 +149,6 @@ Ports used by wsdd2:
 
 ## Services
 
-  * Dynamic DNS -> Disable
   * Wifi Schedule
 
 
@@ -159,32 +189,6 @@ Ports used by wsdd2:
 
     uci commit
     /etc/init.d/network restart
-
-
-
-## Set custom DNS servers for DHCP
-
-    uci show dhcp.lan.dhcp_option
-    # 6 = DHCP option code for specifying DNS servers
-    uci add_list dhcp.lan.dhcp_option="6,1.1.1.2,1.0.0.2"
-    uci commit dhcp
-    /etc/init.d/dnsmasq restart
-    uci show dhcp.lan.dhcp_option
-
-
-
-## Set custom DNS servers for router
-    
-    cat /etc/resolv.conf
-    uci show dhcp.@dnsmasq[0].server
-    uci show network.wan.peerdns
-    cat /tmp/resolv.conf.d/resolv.conf.auto
-    uci show network.wan.dns
-    uci set network.wan.peerdns='0'
-    uci set network.wan.dns='1.1.1.3 1.0.0.3'
-    uci commit network
-    /etc/init.d/network restart
-    uci show network.wan
 
 
 
