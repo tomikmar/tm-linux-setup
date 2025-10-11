@@ -7,6 +7,22 @@ Tested on OpenWrt 24.10.
 ## System / Administration
 
   * SSH-Keys
+
+
+
+## Network
+
+  * Interfaces
+    ```bash
+    uci show network.lan.ipaddr
+    uci set network.lan.ipaddr='192.168.101.1'
+    uci commit network
+    ```
+
+
+
+## System / Administration
+
   * SSH Access
     ```bash
     uci show dropbear.@dropbear[0].PasswordAuth
@@ -20,17 +36,6 @@ Tested on OpenWrt 24.10.
     uci commit dropbear
     /etc/init.d/dropbear restart
     netstat -antup | grep dropbear
-    ```
-
-
-
-## Network
-
-  * Interfaces
-    ```bash
-    uci show network.lan.ipaddr
-    uci set network.lan.ipaddr='192.168.101.1'
-    uci commit network
     ```
 
 
@@ -160,15 +165,19 @@ Ports used by wsdd2:
     uci delete dhcp.@dnsmasq[0].notinterface
     uci delete dhcp.@dnsmasq[0].listen_address
     # Configure dnsmasq to listen on specific interfaces and IP
-    uci add_list dhcp.@dnsmasq[0].interface='br-lan'
+    uci add_list dhcp.@dnsmasq[0].interface='lan'
+    uci add_list dhcp.@dnsmasq[0].notinterface='loopback'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan'
-    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.100.1'
+    uci add_list dhcp.@dnsmasq[0].notinterface='wan6'
+    # listen_address is not needed if inclusion and exclusions are provided
+    # uci add_list dhcp.@dnsmasq[0].listen_address='192.168.101.1'
     uci set dhcp.@dnsmasq[0].bind_interfaces='1'
     uci set dhcp.@dnsmasq[0].localservice='1'
     uci set dhcp.@dnsmasq[0].noresolv='0'
     uci commit dhcp
     /etc/init.d/dnsmasq restart
     /etc/init.d/dnsmasq status
+    netstat -antup | grep dnsmasq
     ping -c3 dns.quad9.net
 
 
