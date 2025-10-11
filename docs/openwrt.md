@@ -15,8 +15,28 @@ Tested on OpenWrt 24.10.
   * Interfaces
     ```bash
     uci show network.lan.ipaddr
+    #
     uci set network.lan.ipaddr='192.168.101.1'
+    #
     uci commit network
+    uci show network.lan.ipaddr
+    ```
+
+
+
+## System / System
+
+  * Set hostname
+    ```bash
+    uci get system.@system[0].hostname
+    cat /proc/sys/kernel/hostname
+    #
+    uci set system.@system[0].hostname='NewName'
+    #
+    uci commit system
+    /etc/init.d/system reload
+    uci get system.@system[0].hostname
+    cat /proc/sys/kernel/hostname
     ```
 
 
@@ -29,10 +49,12 @@ Tested on OpenWrt 24.10.
     uci show dropbear.@dropbear[0].RootPasswordAuth
     uci show dropbear.@dropbear[0].Interface
     uci show dropbear.@dropbear[0].Port
+    #
     uci set dropbear.@dropbear[0].PasswordAuth='off'
     uci set dropbear.@dropbear[0].RootPasswordAuth='off'
     uci set dropbear.@dropbear[0].Interface='lan'
     uci set dropbear.@dropbear[0].Port='<SSH-PORT>'
+    #
     uci commit dropbear
     /etc/init.d/dropbear restart
     netstat -antup | grep dropbear
