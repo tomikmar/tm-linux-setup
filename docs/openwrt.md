@@ -171,6 +171,26 @@ Ports used by wsdd2:
 
 
 
+## Services / Wifi Schedule
+
+  * Monday-Friday
+  * Weekend
+
+
+
+## Network / DHCP and DNS
+
+  * Static leases
+    ```bash
+    # Static IP for ... device in DHCP
+    uci set dhcp.<IOT-NAME>=host
+    uci set dhcp.<IOT-NAME>.name='xxxxxxx'
+    uci set dhcp.<IOT-NAME>.mac='xx:xx:xx:xx:xx:xx'
+    uci set dhcp.<IOT-NAME>.ip='192.168.xxx.xxx'
+    ```
+
+
+
 ## Install
 
     opkg update
@@ -179,16 +199,9 @@ Ports used by wsdd2:
 
 
 
-## Services
-
-  * Wifi Schedule
-
-
-
 ## Network
 
   * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
-  * DHCP and DNS / Static leases
 
 
 
