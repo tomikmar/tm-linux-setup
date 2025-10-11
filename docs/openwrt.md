@@ -358,8 +358,8 @@ Ports used by wsdd2:
     uci set wireless.iot_wifi.isolate='0'
     # Disable Wi-Fi Protected Setup (WPS)
     uci set wireless.iot_wifi.wps='0'
-    # Hide network
-    uci set wireless.iot_wifi.hidden='1'
+    # Hide network -> NOT SUPPORTED BY MY DEVICES
+    # uci set wireless.iot_wifi.hidden='1'
 
     # Set firewall
     uci delete firewall.iot_zone
