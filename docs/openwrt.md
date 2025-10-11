@@ -187,15 +187,10 @@ Ports used by wsdd2:
     uci set dhcp.<IOT-NAME>.name='xxxxxxx'
     uci set dhcp.<IOT-NAME>.mac='xx:xx:xx:xx:xx:xx'
     uci set dhcp.<IOT-NAME>.ip='192.168.xxx.xxx'
+
+    uci commit dhcp
+    /etc/init.d/dnsmasq restart
     ```
-
-
-
-## Install
-
-    opkg update
-    # Network monitoring
-    opkg install ifstat iftop nload bmon
 
 
 
@@ -379,6 +374,14 @@ Ports used by wsdd2:
     /etc/init.d/dnsmasq restart
     /etc/init.d/firewall restart
     /etc/init.d/network restart
+
+
+
+## Install
+
+    opkg update
+    # Network monitoring
+    opkg install ifstat iftop nload bmon
 
 
 
