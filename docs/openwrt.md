@@ -114,7 +114,7 @@ Ports used by wsdd2:
 
 ## Set custom DNS
 
-  * Set custom DNS servers for DHCP
+#### Set custom DNS servers for DHCP
 
     uci show dhcp.lan.dhcp_option
     # 6 = DHCP option code for specifying DNS servers
@@ -123,7 +123,7 @@ Ports used by wsdd2:
     /etc/init.d/dnsmasq restart
     uci show dhcp.lan.dhcp_option
 
-  *  Set custom DNS servers for router
+####  Set custom DNS servers for router
     
     cat /etc/resolv.conf
     cat /tmp/resolv.conf.d/resolv.conf.auto
@@ -136,27 +136,6 @@ Ports used by wsdd2:
     uci commit network
     /etc/init.d/network restart
     uci show network.wan
-
-
-
-## Install
-
-    opkg update
-    # Network monitoring
-    opkg install ifstat iftop nload bmon
-
-
-
-## Services
-
-  * Wifi Schedule
-
-
-
-## Network
-
-  * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
-  * DHCP and DNS / Static leases
 
 
 
@@ -189,6 +168,27 @@ Ports used by wsdd2:
 
     uci commit
     /etc/init.d/network restart
+
+
+
+## Install
+
+    opkg update
+    # Network monitoring
+    opkg install ifstat iftop nload bmon
+
+
+
+## Services
+
+  * Wifi Schedule
+
+
+
+## Network
+
+  * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
+  * DHCP and DNS / Static leases
 
 
 
