@@ -218,8 +218,16 @@ Ports used by wsdd2:
     /etc/init.d/odhcpd disable
     /etc/init.d/odhcpd stop
 
+    # Delete wan6 interface
+    uci delete network.wan6
+
     uci commit
     /etc/init.d/network restart
+
+    /etc/init.d/odhcpd status
+    ps | grep odhcpd
+    ps | grep odhcp6c
+    uci show network.wan6
 
 
 
@@ -299,7 +307,7 @@ Ports used by wsdd2:
     # Add wifi interface
     uci delete wireless.guest_wifi
     uci set wireless.guest_wifi=wifi-iface
-    uci set wireless.guest_wifi.device='radio1'
+    uci set wireless.guest_wifi.device='radio0'
     uci set wireless.guest_wifi.network='guest_net'
     uci set wireless.guest_wifi.mode='ap'
     # ! UPDATE !
@@ -388,7 +396,7 @@ Ports used by wsdd2:
     # Add wifi interface
     uci delete wireless.iot_wifi
     uci set wireless.iot_wifi=wifi-iface
-    uci set wireless.iot_wifi.device='radio1'
+    uci set wireless.iot_wifi.device='radio0'
     uci set wireless.iot_wifi.network='iot_net'
     uci set wireless.iot_wifi.mode='ap'
     # ! UPDATE !
