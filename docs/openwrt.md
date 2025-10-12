@@ -208,8 +208,30 @@ Ports used by wsdd2:
 
 ## Services / Wifi Schedule
 
-  * Monday-Friday
-  * Weekend
+    uci add wifi_schedule global
+    uci set wifi_schedule.@global[0].enabled='1'
+    uci set wifi_schedule.@global[0].logging='1'
+    uci set wifi_schedule.@global[0].unload_modules='0'  
+    uci set wifi_schedule.@global[0].recheck_interval='10'
+    uci set wifi_schedule.@global[0].modules_retries='10'
+
+    uci set wifi_schedule.Businesshours=entry
+    uci set wifi_schedule.Businesshours.enabled='1'
+    uci set wifi_schedule.Businesshours.daysofweek='Monday Tuesday Wednesday Thursday Friday'
+    uci set wifi_schedule.Businesshours.starttime='05:00'
+    uci set wifi_schedule.Businesshours.stoptime='02:00'
+    uci set wifi_schedule.Businesshours.forcewifidown='1'
+
+    uci set wifi_schedule.Weekend=entry
+    uci set wifi_schedule.Weekend.enabled='1'
+    uci set wifi_schedule.Weekend.daysofweek='Saturday Sunday'
+    uci set wifi_schedule.Weekend.starttime='05:00'
+    uci set wifi_schedule.Weekend.stoptime='02:00'
+    uci set wifi_schedule.Weekend.forcewifidown='1'
+
+    uci commit wifi_schedule
+    /etc/init.d/wifi_schedule restart
+    wifi_schedule.sh cron
 
 
 
