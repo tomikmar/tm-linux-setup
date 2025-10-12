@@ -84,17 +84,16 @@ Tested on OpenWrt 24.10.
 
 ## Limit dnsmask interfaces
 
-    # Clear previous settings
     uci show dhcp.@dnsmasq[0].interface
     uci show dhcp.@dnsmasq[0].notinterface
     uci show dhcp.@dnsmasq[0].listen_address
     #
+    # Clear previous settings
     uci delete dhcp.@dnsmasq[0].interface
     uci delete dhcp.@dnsmasq[0].notinterface
     uci delete dhcp.@dnsmasq[0].listen_address
     # Configure dnsmasq to listen on specific interfaces and IP
     uci add_list dhcp.@dnsmasq[0].interface='lan'
-    uci add_list dhcp.@dnsmasq[0].notinterface='loopback'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan6'
     # listen_address is not needed if inclusion and exclusions are provided
@@ -107,13 +106,31 @@ Tested on OpenWrt 24.10.
     /etc/init.d/dnsmasq restart
     /etc/init.d/dnsmasq status
     netstat -antup | grep dnsmasq
-
-    # As dnsmasq no longer listens on localhost, the /etc/resolv.conf file must be
-    # adjusted to allow the router to resolve DNS queries through dnsmasq locally.
-    search lan
-    nameserver 192.168.101.1
-    
     ping -c3 dns.quad9.net
+
+
+#### Remarks regarding additional networks
+
+When resetting `dnsmasq` we should also add interfaces configured later:
+
+    uci add_list dhcp.@dnsmasq[0].interface='guest_net'
+    uci add_list dhcp.@dnsmasq[0].interface='iot_net'
+
+
+#### Remakrs regarding loopback
+
+When `dnsmasq` is configured to not listen on the loopback interface:
+
+    uci add_list dhcp.@dnsmasq[0].notinterface='loopback'
+
+the automatic generation of /etc/resolv.conf should also be disabled:
+
+    uci set dhcp.@dnsmasq[0].noresolv='1'
+
+and /etc/resolv.conf must be manually configured to point to the correct IP address
+on which dnsmasq is listening. Without these changes, the system DNS resolver will
+attempt to use the default loopback address (127.0.0.1), which will fail since
+`dnsmasq` is no longer listening on that interface.
 
 
 
@@ -254,6 +271,7 @@ Ports used by wsdd2:
 ## Network
 
   * Configure and enable WiFi
+    * 'sae-mixed' downgrade is required for my printer
   * Wireless / Edit / Wireless security / Encryption / sae-mixed | sae
 
 
@@ -275,7 +293,7 @@ Ports used by wsdd2:
     uci set dhcp.guest_dhcp.limit='30'
     uci set dhcp.guest_dhcp.leasetime='4h'
     uci add_list dhcp.@dnsmasq[0].interface='guest_net'
-    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.103.1'
+    #uci add_list dhcp.@dnsmasq[0].listen_address='192.168.103.1'
 
     # Add wifi interface
     uci delete wireless.guest_wifi
@@ -363,7 +381,7 @@ Ports used by wsdd2:
     uci set dhcp.iot_dhcp.limit='30'
     uci set dhcp.iot_dhcp.leasetime='24h'
     uci add_list dhcp.@dnsmasq[0].interface='iot_net'
-    uci add_list dhcp.@dnsmasq[0].listen_address='192.168.105.1'
+    #uci add_list dhcp.@dnsmasq[0].listen_address='192.168.105.1'
 
     # Add wifi interface
     uci delete wireless.iot_wifi
