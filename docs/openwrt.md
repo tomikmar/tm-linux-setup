@@ -307,6 +307,7 @@ Ports used by wsdd2:
     # Add wifi interface
     uci delete wireless.guest_wifi
     uci set wireless.guest_wifi=wifi-iface
+    # ! Verify if radioX is correct for this network
     uci set wireless.guest_wifi.device='radio0'
     uci set wireless.guest_wifi.network='guest_net'
     uci set wireless.guest_wifi.mode='ap'
@@ -396,6 +397,7 @@ Ports used by wsdd2:
     # Add wifi interface
     uci delete wireless.iot_wifi
     uci set wireless.iot_wifi=wifi-iface
+    # ! Verify if radioX is correct for this network
     uci set wireless.iot_wifi.device='radio0'
     uci set wireless.iot_wifi.network='iot_net'
     uci set wireless.iot_wifi.mode='ap'
