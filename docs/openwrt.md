@@ -96,7 +96,7 @@ Tested on OpenWrt 24.10.
     uci add_list dhcp.@dnsmasq[0].interface='lan'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan'
     uci add_list dhcp.@dnsmasq[0].notinterface='wan6'
-    # listen_address is not needed if inclusion and exclusions are provided
+    # listen_address is not needed if interfaces inclusions and exclusions are provided
     # uci add_list dhcp.@dnsmasq[0].listen_address='192.168.101.1'
     uci set dhcp.@dnsmasq[0].bind_interfaces='1'
     uci set dhcp.@dnsmasq[0].localservice='1'
@@ -127,8 +127,8 @@ the automatic generation of /etc/resolv.conf should also be disabled:
 
     uci set dhcp.@dnsmasq[0].noresolv='1'
 
-and /etc/resolv.conf must be manually configured to point to the correct IP address
-on which dnsmasq is listening. Without these changes, the system DNS resolver will
+and `/etc/resolv.conf` must be manually configured to point to the correct IP address
+on which `dnsmasq` is listening. Without these changes, the system DNS resolver will
 attempt to use the default loopback address (127.0.0.1), which will fail since
 `dnsmasq` is no longer listening on that interface.
 
@@ -293,6 +293,7 @@ Ports used by wsdd2:
     uci set dhcp.guest_dhcp.limit='30'
     uci set dhcp.guest_dhcp.leasetime='4h'
     uci add_list dhcp.@dnsmasq[0].interface='guest_net'
+    # listen_address is not needed if interfaces inclusions and exclusions are provided
     #uci add_list dhcp.@dnsmasq[0].listen_address='192.168.103.1'
 
     # Add wifi interface
@@ -381,6 +382,7 @@ Ports used by wsdd2:
     uci set dhcp.iot_dhcp.limit='30'
     uci set dhcp.iot_dhcp.leasetime='24h'
     uci add_list dhcp.@dnsmasq[0].interface='iot_net'
+    # listen_address is not needed if interfaces inclusions and exclusions are provided
     #uci add_list dhcp.@dnsmasq[0].listen_address='192.168.105.1'
 
     # Add wifi interface
