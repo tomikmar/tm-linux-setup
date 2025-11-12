@@ -13,7 +13,7 @@
     # Converters
     sudo apt install dos2unix
     # Network tools
-    sudo apt install net-tools hping3 nmap iw speedtest-cli
+    sudo apt install curl net-tools hping3 nmap iw speedtest-cli
     # Password manager
     sudo apt install keepassxc
     # Pictures
