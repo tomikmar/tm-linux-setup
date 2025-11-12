@@ -16,8 +16,8 @@
     sudo apt install curl net-tools hping3 nmap iw speedtest-cli
     # Password manager
     sudo apt install keepassxc
-    # Pictures
-    apt install exiftool
+    # Media
+    apt install exiftool ffmpegthumbnailer
     # Dev tools
     sudo apt install git gitk openjdk-??-jdk
 
