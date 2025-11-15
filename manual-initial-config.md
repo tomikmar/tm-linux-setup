@@ -1,7 +1,7 @@
 ### Install
 
     # Tools
-    sudo apt install vim colordiff mc pv jq httpie whois hexdiff xclip 
+    sudo apt install vim colordiff mc pv jq httpie whois hexdiff xclip inotify-tools
     # Compression
     sudo apt install p7zip-full pigz
     # Hex editor
