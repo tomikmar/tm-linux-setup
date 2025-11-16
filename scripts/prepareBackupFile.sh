@@ -3,7 +3,7 @@
 set -o nounset
 
 
-SCRIPT_VERSION="1.0.3 (2025.09.18)"
+SCRIPT_VERSION="1.0.4 (2025.11.15)"
 
 OUTPUT_DIR=~/_backup-encrypted
 
@@ -56,8 +56,14 @@ change_dir() {
 
 [ $# -eq 0 ] && { echo "Please provide directory to backup as the first argument."; exit 1; }
 DIR_TO_BACKUP=$1
-[ $# -eq 1 ] && { echo "Please provide gpg recipent as the second argument."; exit 1; }
-RECIPIENT=$2
+[ $# -eq 1 ] && { echo "Please provide gpg recipent as the second (and optionally the third) argument."; exit 1; }
+RECIPIENT_1=$2
+if [ -n "${3+x}" ] && [ -n "$3" ]; then
+    RECIPIENT_2="$3"
+else
+    RECIPIENT_2=""
+fi
+
 [ ! -e $DIR_TO_BACKUP ] && { echo "Directory \"$DIR_TO_BACKUP\" does not exist."; exit 1; }
 [ ! -d $DIR_TO_BACKUP ] && { echo "\"$DIR_TO_BACKUP\" is NOT a directory."; exit 1; }
 
@@ -66,8 +72,9 @@ command -v createContentInfo.sh  || { echo "Please add \"createContentInfo.sh\" 
 command -v gpg || { echo "Please install \"gpg\" first."; exit 2; }
 command -v pigz || { echo "Please install \"pigz\" first."; exit 2; }
 
-echo "Checking if public key is available for recipient \"$RECIPIENT\" ..."
-gpg --list-key $RECIPIENT || exit 3
+echo "Checking existence of public key(s) for recipient(s): $RECIPIENT_1 $RECIPIENT_2"
+gpg --list-key $RECIPIENT_1 || exit 3
+[ -n "$RECIPIENT_2" ] && gpg --list-key $RECIPIENT_2 || exit 3
 
 
 echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Preparing backup file (script version: $SCRIPT_VERSION) ..."
@@ -95,7 +102,11 @@ ls -l $ARCHIVE_FILE
 ls -lh $ARCHIVE_FILE
 
 echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive (first pass) ..."
-gpg --encrypt --cipher-algo AES256 --recipient "$RECIPIENT" $ARCHIVE_FILE
+echo "Recipients: '$RECIPIENT_1' '$RECIPIENT_2'"
+gpg --encrypt --cipher-algo AES256 \
+	--recipient "$RECIPIENT_1" \
+	${RECIPIENT_2:+--recipient "$RECIPIENT_2"} \
+	$ARCHIVE_FILE
 #rm $ARCHIVE_FILE
 #echo "[`date +"%Y-%m-%d-%H:%M:%S"`] Encrypting archive (second pass) ..."
 #gpg --encrypt --cipher-algo CAMELLIA256 --recipient "$RECIPIENT" $ARCHIVE_FILE.gpg
