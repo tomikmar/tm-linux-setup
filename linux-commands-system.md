@@ -165,4 +165,5 @@ Splitting files
 ---------------
 
     split -b 8G --numeric-suffixes=1 name.bin name.bin_
+    cat name.bin_0* > name.bin
 

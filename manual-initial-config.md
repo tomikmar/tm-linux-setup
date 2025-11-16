@@ -17,7 +17,9 @@
     # Password manager
     sudo apt install keepassxc
     # Media
-    apt install exiftool ffmpegthumbnailer
+    sudo apt install exiftool ffmpegthumbnailer mplayer
+    # OpenGL
+    sudo apt install mesa-utils
     # Dev tools
     sudo apt install git gitk openjdk-??-jdk
 
