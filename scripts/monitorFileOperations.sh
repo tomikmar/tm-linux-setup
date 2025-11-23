@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-SCRIPT_VERSION="1.0.0 (2025.11.15)"
+SCRIPT_VERSION="1.0.1 (2025.11.16)"
 
 LOG_FILE="$HOME/.file-access.log"
 
@@ -29,6 +29,7 @@ echo "Log file   : $LOG_FILE" | tee -a "$LOG_FILE"
 echo "Script ver : $SCRIPT_VERSION" | tee -a "$LOG_FILE"
 
 inotifywait -m "${ARGS[@]}" \
+	--exclude '/\.git(/|$)' \
        	-e create \
 	-e modify \
 	-e move \
