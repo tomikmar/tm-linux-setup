@@ -167,3 +167,19 @@ Splitting files
     split -b 8G --numeric-suffixes=1 name.bin name.bin_
     cat name.bin_0* > name.bin
 
+
+
+iOS
+---
+
+    sudo apt install libimobiledevice-utils ifuse
+
+    # Pair with the iPhone 
+    idevicepair pair
+    # Mount the iPhone filesystem
+    ifuse /media/iphone
+    # Unmount the iPhone filesystem
+    fusermount -u /media/iphone
+    # Remove pairing with the iPhone
+    idevicepair unpair
+
